@@ -1,0 +1,1133 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>우리 집 지역화폐, 인천이었다면? | 대구로페이·인천e음 비교</title>
+<meta name="description" content="가족 수만 누르면 대구로페이와 인천e음의 1년 혜택이 바로 비교됩니다.">
+<!-- 카카오톡·문자 미리보기: 아래 SITE_URL_HERE 두 곳을 실제 주소(예: https://내주소/pay)로 바꾸세요 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="우리 집 지역화폐, 인천이었다면?">
+<meta property="og:description" content="가족 수만 누르면 대구로페이와 인천e음의 1년 혜택이 바로 비교됩니다.">
+<meta property="og:url" content="SITE_URL_HERE/">
+<meta property="og:image" content="SITE_URL_HERE/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="ko_KR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+<style>
+:root{
+  --bg:#f3f5f8; --surface:#ffffff; --ink:#142033; --muted:#4f5d70; --line:#d3d9e2;
+  --c1:#6a3fb5; --c2:#0b7f73; --warn-bg:#fff3cf; --warn-ink:#5c4000; --virt-bg:#ece6fb; --virt-ink:#3f2a8a;
+  --ok:#14663a; --err:#a3201a; --focus:#0a6cff; --cur:#e7f0ff;
+  color-scheme: light;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1622; --surface:#18222f; --ink:#eaf0f8; --muted:#a9b6c8; --line:#334255;
+    --c1:#b9a0ff; --c2:#4fd1c1; --warn-bg:#3b3010; --warn-ink:#ffe3a0; --virt-bg:#2c2550; --virt-ink:#d9ceff;
+    --ok:#6fd49b; --err:#ff8f88; --focus:#8ab8ff; --cur:#23344d; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1622; --surface:#18222f; --ink:#eaf0f8; --muted:#a9b6c8; --line:#334255;
+  --c1:#b9a0ff; --c2:#4fd1c1; --warn-bg:#3b3010; --warn-ink:#ffe3a0; --virt-bg:#2c2550; --virt-ink:#d9ceff;
+  --ok:#6fd49b; --err:#ff8f88; --focus:#8ab8ff; --cur:#23344d; color-scheme: dark;
+}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px);}
+*,*::before,*::after{box-sizing:border-box;}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Noto Sans KR","Apple SD Gothic Neo","Malgun Gothic","Nanum Gothic",sans-serif;font-size:18px;line-height:1.65;word-break:keep-all;overflow-wrap:anywhere;-webkit-text-size-adjust:100%;}
+.wrap{max-width:780px;margin:0 auto;padding:16px 16px 56px;}
+h1{font-size:clamp(1.9rem,6.4vw,2.6rem);line-height:1.2;margin:8px 0 6px;font-weight:900;letter-spacing:-0.02em;}
+h2{font-size:1.35rem;margin:0 0 12px;line-height:1.3;font-weight:700;}
+h3{font-size:1.05rem;margin:0 0 6px;font-weight:700;}
+h4{font-size:1rem;margin:0 0 8px;}
+p{margin:0 0 10px;}
+.lead{color:var(--muted);margin-bottom:14px;}
+.banner{padding:10px 14px;border-radius:10px;font-weight:700;margin:10px 0;border:2px solid currentColor;}
+.banner.plan{background:var(--warn-bg);color:var(--warn-ink);}
+.banner.virtual{background:var(--virt-bg);color:var(--virt-ink);border-style:dashed;}
+.chip{display:inline-block;padding:4px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-size:.9rem;color:var(--muted);}
+.row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin:8px 0;}
+select,input[type=number]{font:inherit;font-size:1rem;min-height:48px;padding:6px 10px;border:2px solid var(--line);border-radius:10px;background:var(--surface);color:var(--ink);max-width:100%;}
+select{width:100%;}
+.row select{width:auto;}
+input[type=checkbox]{width:26px;height:26px;accent-color:var(--c1);vertical-align:middle;flex:none;}
+:focus-visible{outline:3px solid var(--focus);outline-offset:2px;}
+button{font:inherit;cursor:pointer;}
+.modes{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px;}
+.mode{flex:1 1 150px;min-height:48px;padding:8px 12px;border-radius:10px;border:2px solid var(--line);background:var(--surface);color:var(--ink);text-align:left;font-size:.95rem;line-height:1.35;}
+.mode[aria-selected="true"]{border-color:var(--ink);font-weight:700;box-shadow:inset 0 0 0 1px var(--ink);}
+.mode[aria-disabled="true"]{color:var(--muted);border-style:dashed;cursor:not-allowed;}
+.card,.step{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px 16px;margin:16px 0;}
+.caution{border-left:6px solid var(--warn-ink);}
+.caution ul{margin:0;padding-left:1.2em;}
+.num{display:inline-flex;align-items:center;justify-content:center;width:1.9em;height:1.9em;border-radius:50%;background:var(--ink);color:var(--surface);font-size:.85em;margin-right:8px;}
+.citybtns{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.citybtn{display:flex;flex-direction:column;gap:2px;text-align:left;padding:14px;border-radius:12px;border:3px solid var(--line);background:var(--surface);color:var(--ink);min-height:48px;position:relative;}
+.citybtn .sym{font-size:1.6rem;line-height:1;font-weight:900;}
+.citybtn .nm{font-size:1.4rem;font-weight:900;}
+.citybtn .pd,.citybtn .cp{font-size:.88rem;color:var(--muted);line-height:1.4;}
+.citybtn .sel{margin-top:6px;font-weight:700;font-size:.95rem;}
+.cb0 .sym,.cb0 .sel{color:var(--c1);} .cb1 .sym,.cb1 .sel{color:var(--c2);}
+.citybtn[aria-pressed="true"].cb0{border-color:var(--c1);background:color-mix(in srgb,var(--c1) 9%,var(--surface));}
+.citybtn[aria-pressed="true"].cb1{border-color:var(--c2);border-style:dashed;background:color-mix(in srgb,var(--c2) 9%,var(--surface));}
+.btnrow{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0 0;}
+.btn{min-height:48px;padding:8px 16px;border-radius:10px;border:2px solid var(--ink);background:var(--surface);color:var(--ink);font-weight:500;}
+.btn.pri{background:var(--ink);color:var(--surface);}
+.mem{border-top:1px solid var(--line);padding:12px 0;display:grid;gap:8px;}
+.mem:first-child{border-top:0;}
+.chk{display:flex;align-items:center;gap:10px;min-height:48px;}
+.amt{display:grid;gap:4px;font-size:.95rem;color:var(--muted);}
+.inp{display:flex;align-items:center;gap:8px;}
+.inp input{flex:1;min-width:0;font-size:1.15rem;}
+.inp em{font-style:normal;color:var(--ink);}
+.fld{display:grid;gap:4px;margin:0 0 12px;font-size:.95rem;color:var(--muted);}
+.fld input,.fld select{color:var(--ink);}
+.hint,.unit{font-size:.88rem;color:var(--muted);margin:6px 0 0;}
+.agrid{display:grid;gap:12px;}
+@media(min-width:640px){.agrid{grid-template-columns:1fr 1fr;}}
+.abox{border:2px solid var(--line);border-radius:12px;padding:12px;}
+.ab0{border-color:var(--c1);} .ab1{border-color:var(--c2);border-style:dashed;}
+.mf{border:0;padding:0;margin:0;}
+.mf legend{font-size:.95rem;color:var(--muted);padding:0;margin-bottom:6px;}
+.mchips{display:flex;flex-wrap:wrap;gap:6px;}
+.mchip{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--line);border-radius:8px;padding:2px 8px 2px 4px;min-height:40px;font-size:.95rem;color:var(--ink);}
+details{border:1px solid var(--line);border-radius:12px;padding:10px 14px;margin-top:12px;background:var(--surface);}
+summary{cursor:pointer;font-weight:700;min-height:44px;display:flex;align-items:center;}
+.meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px;}
+.metrics{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.metric{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--bg);}
+.metric h3{color:var(--muted);font-size:.95rem;}
+.metric .val{font-size:clamp(1.15rem,5.2vw,1.55rem);font-weight:900;margin:0 0 4px;line-height:1.25;}
+.metric .sub{font-size:.82rem;color:var(--muted);margin:0;line-height:1.45;}
+.err{color:var(--err);font-weight:700;background:color-mix(in srgb,var(--err) 10%,var(--surface));padding:10px 12px;border-radius:10px;}
+.legend{display:flex;flex-wrap:wrap;gap:14px;margin:6px 0 6px;font-weight:700;}
+.lg0 b{color:var(--c1);} .lg1 b{color:var(--c2);}
+.chart svg{width:100%;height:auto;display:block;max-width:560px;margin:0 auto;}
+.chart{margin:4px 0 10px;}
+.tw{overflow-x:auto;margin:8px 0;border:1px solid var(--line);border-radius:10px;max-width:100%;}
+table{border-collapse:collapse;width:100%;font-size:.88rem;min-width:520px;}
+th,td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap;}
+thead th{background:var(--bg);position:static;}
+tbody th{text-align:left;font-weight:700;white-space:normal;}
+td:first-child{text-align:left;}
+tr.cur{background:var(--cur);} tr.tot{font-weight:900;background:var(--bg);}
+.tw.soft table{min-width:0;} .tw.soft th,.tw.soft td{white-space:normal;overflow-wrap:normal;text-align:left;vertical-align:top;} .tw.soft thead th{text-align:left;}
+.age input{width:5.2em;min-height:44px;font-size:1.1rem;text-align:center;}
+.memhead{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;}
+.agenote{font-size:.88rem;color:var(--muted);margin:0;}
+.glance{margin-top:14px;}
+.gl{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.glc{border:2px solid var(--line);border-radius:12px;padding:10px 12px;display:flex;flex-direction:column;gap:2px;}
+.gc0{border-color:var(--c1);} .gc1{border-color:var(--c2);border-style:dashed;}
+.gv{font-size:clamp(1.05rem,4.8vw,1.35rem);font-weight:900;line-height:1.3;}
+.gs{font-size:.8rem;color:var(--muted);line-height:1.4;}
+.calrow{margin:8px 0 12px;}
+.calgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:4px;}
+@media(min-width:560px){.calgrid{grid-template-columns:repeat(12,1fr);}}
+.cal{border:1px solid var(--line);border-radius:8px;text-align:center;padding:4px 0;display:flex;flex-direction:column;line-height:1.3;color:var(--muted);}
+.cal b{font-size:.78rem;font-weight:500;} .cal i{font-style:normal;font-size:1.15rem;font-weight:900;}
+.cal.on.c0{border:2px solid var(--c1);color:var(--c1);background:color-mix(in srgb,var(--c1) 10%,var(--surface));}
+.cal.on.c1{border:2px dashed var(--c2);color:var(--c2);background:color-mix(in srgb,var(--c2) 10%,var(--surface));}
+.quick{background:var(--surface);border:3px solid var(--ink);border-radius:18px;padding:18px 16px;margin:14px 0;}
+.qq{font-size:1.3rem;font-weight:700;margin:0 0 10px;line-height:1.4;}
+.qbtns{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px;}
+.qbtn{min-height:58px;font-size:1.3rem;font-weight:900;border-radius:12px;border:2px solid var(--line);background:var(--bg);color:var(--ink);}
+.qbtn[aria-pressed="true"]{background:var(--ink);color:var(--surface);border-color:var(--ink);}
+.qsub{margin:0 0 8px;font-weight:700;color:var(--muted);}
+.bars{display:grid;gap:14px;}
+.bhead{display:flex;justify-content:space-between;align-items:baseline;gap:8px;}
+.bname{font-size:.95rem;color:var(--muted);} .bname b{font-size:1.15rem;}
+.bval{font-size:clamp(1.8rem,9vw,2.6rem);font-weight:900;line-height:1.1;white-space:nowrap;}
+.bc0 .bname b,.bc0 .bval{color:var(--c1);} .bc1 .bname b,.bc1 .bval{color:var(--c2);}
+.btrack{height:26px;border-radius:8px;background:var(--bg);border:1px solid var(--line);overflow:hidden;margin-top:4px;}
+.bfill{height:100%;border-radius:6px 0 0 6px;}
+.bc0 .bfill{background:var(--c1);}
+.bc1 .bfill{background:repeating-linear-gradient(45deg,var(--c2) 0 6px,color-mix(in srgb,var(--c2) 55%,var(--surface)) 6px 10px);background-color:var(--c2);}
+@media (prefers-reduced-motion:no-preference){.bfill{transition:width .35s ease;}}
+.qdiff{margin:16px 0 14px;font-size:1.25rem;line-height:1.45;text-align:center;font-weight:700;}
+.qdiff b{font-size:1.6rem;font-weight:900;}
+.facts{display:grid;gap:10px;}
+.fact{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--bg);}
+.fact h3{font-size:.95rem;color:var(--muted);margin:0 0 8px;}
+.frow{display:grid;grid-template-columns:1fr auto;align-items:baseline;gap:4px 8px;margin:8px 0 12px;}
+.frow .strip{grid-column:1 / -1;grid-row:2;}
+.fl{font-size:.95rem;white-space:nowrap;} .fv{font-weight:900;text-align:right;white-space:nowrap;}
+.strip{display:grid;grid-template-columns:repeat(12,1fr);gap:2px;}
+.strip i{font-style:normal;text-align:center;font-size:.72rem;line-height:2;overflow-wrap:normal;white-space:nowrap;border-radius:4px;border:1px solid var(--line);color:var(--muted);background:var(--surface);}
+.fc0 .fl b,.fc0 .fv{color:var(--c1);} .fc1 .fl b,.fc1 .fv{color:var(--c2);}
+.fc0 .strip i.on{background:var(--c1);border-color:var(--c1);color:var(--surface);font-weight:700;}
+.fc1 .strip i.on{background:var(--c2);border-color:var(--c2);color:var(--surface);font-weight:700;}
+.pair{display:grid;grid-template-columns:1fr 1fr;gap:8px;}
+.pcell{display:flex;flex-direction:column;gap:2px;} .pcell span{font-size:1.5rem;font-weight:900;line-height:1.2;}
+.pcell.fc0 b,.pcell.fc0 span{color:var(--c1);} .pcell.fc1 b,.pcell.fc1 span{color:var(--c2);}
+.pcell em{font-style:normal;font-size:.8rem;color:var(--muted);}
+.fsub{font-size:.82rem;color:var(--muted);margin:8px 0 0;}
+.qnote{font-size:.78rem;color:var(--muted);margin:12px 0 2px;line-height:1.5;}
+.evcard{border-width:2px;border-color:var(--line);}
+.evcard h2{margin-bottom:10px;}
+.ev{border:1px solid var(--line);border-radius:12px;padding:12px;background:var(--bg);margin-bottom:10px;}
+.ev h3{font-size:.95rem;color:var(--muted);margin:0 0 10px;}
+.erow{display:grid;grid-template-columns:3.6em 1fr 4.6em;gap:6px;align-items:center;margin:5px 0;font-size:.95rem;}
+.en{white-space:nowrap;color:var(--muted);} .evv{text-align:right;white-space:nowrap;color:var(--muted);}
+.et{height:18px;background:var(--surface);border:1px solid var(--line);border-radius:5px;overflow:hidden;}
+.et i{display:block;height:100%;background:var(--muted);opacity:.45;}
+.erow.e0 .en,.erow.e0 .evv{color:var(--c1);font-weight:900;} .erow.e0 .et i{background:var(--c1);opacity:1;}
+.erow.e1 .en,.erow.e1 .evv{color:var(--c2);font-weight:900;} .erow.e1 .et i{background:var(--c2);opacity:1;}
+.ebig{text-align:center;font-size:1.15rem;font-weight:700;line-height:1.5;margin:12px 0 4px;}
+.ebig b{font-size:1.35rem;font-weight:900;}
+.tbars{display:grid;grid-template-columns:repeat(7,1fr);gap:5px;align-items:end;height:165px;}
+.tb{display:flex;flex-direction:column;justify-content:flex-end;align-items:center;height:100%;min-width:0;}
+.tb i{display:block;width:100%;background:var(--muted);opacity:.45;border-radius:4px 4px 0 0;}
+.tb.pk i{opacity:.8;} .tb.ls i{background:var(--c1);opacity:1;}
+.tb.pl i{background:repeating-linear-gradient(45deg,var(--c1) 0 4px,color-mix(in srgb,var(--c1) 45%,var(--surface)) 4px 8px);}
+.tv{font-size:.68rem;font-weight:700;white-space:nowrap;margin-bottom:2px;} .tb.ls .tv{color:var(--c1);}
+.ty{font-size:.72rem;color:var(--muted);margin-top:2px;text-align:center;line-height:1.25;min-height:2.5em;}
+.etxt{font-size:.95rem;margin:8px 0 0;line-height:1.55;}
+.efind{border-left:4px solid var(--c1);padding-left:10px;margin:4px 0 8px;font-weight:500;}
+.more{text-align:center;margin:8px 0 0;}
+.linkbtn{background:none;border:0;color:var(--muted);text-decoration:underline;font-size:.92rem;min-height:44px;padding:8px 12px;}
+.wrap{padding:10px 12px 40px;}
+.top1 h1{font-size:clamp(1.2rem,5.6vw,1.55rem);margin:2px 0 8px;line-height:1.25;}
+.quick{padding:12px 12px;margin:0 0 10px;border-radius:16px;}
+.qq{font-size:1.08rem;margin:0 0 8px;}
+.qbtns{gap:6px;margin-bottom:12px;}
+.qbtn{min-height:46px;font-size:1.15rem;}
+.clab{font-size:.82rem;color:var(--muted);font-weight:700;margin:0 0 4px;}
+.cmp{display:grid;gap:10px;}
+.ctop{display:flex;justify-content:space-between;align-items:baseline;gap:6px;}
+.cn{font-size:1.05rem;white-space:nowrap;} .cn small{font-size:.78rem;color:var(--muted);font-weight:500;}
+.cv{font-size:clamp(1.7rem,8.6vw,2.3rem);font-weight:900;line-height:1.05;white-space:nowrap;}
+.c0 .cn b,.c0 .cv,.c0 .cmn{color:var(--c1);} .c1 .cn b,.c1 .cv,.c1 .cmn{color:var(--c2);}
+.cbar{height:16px;border-radius:6px;background:var(--bg);border:1px solid var(--line);overflow:hidden;margin:4px 0 5px;}
+.cbar i{display:block;height:100%;}
+.c0 .cbar i{background:var(--c1);}
+.c1 .cbar i{background:repeating-linear-gradient(45deg,var(--c2) 0 6px,color-mix(in srgb,var(--c2) 55%,var(--surface)) 6px 10px);background-color:var(--c2);}
+.cmon{display:flex;align-items:center;gap:6px;}
+.cmon .strip{flex:1;display:grid;grid-template-columns:repeat(12,1fr);gap:2px;}
+.cmon .strip i{font-style:normal;text-align:center;font-size:.6rem;line-height:1.75;border-radius:3px;border:1px solid var(--line);color:var(--muted);background:var(--surface);white-space:nowrap;overflow:hidden;}
+.c0 .cmon .strip i.on{background:var(--c1);border-color:var(--c1);color:var(--surface);font-weight:700;}
+.c1 .cmon .strip i.on{background:var(--c2);border-color:var(--c2);color:var(--surface);font-weight:700;}
+.cmn{font-size:.9rem;white-space:nowrap;min-width:3.2em;text-align:right;}
+.cres{text-align:center;font-size:1.12rem;font-weight:700;line-height:1.4;margin:12px 0 4px;}
+.cres b{font-size:1.5rem;font-weight:900;}
+.cnote{font-size:.7rem;color:var(--muted);text-align:center;margin:4px 0 8px;line-height:1.4;}
+.qact{display:grid;grid-template-columns:1fr auto;gap:8px;}
+.qact .btn{min-height:46px;padding:6px 12px;font-size:.95rem;line-height:1.3;}
+.morebtn{text-align:left;font-weight:700;border-color:var(--c1)!important;color:var(--c1)!important;}
+.sharebtn{min-width:4.8em;}
+#shareMsg:empty{display:none;}
+.kick{margin:0;font-size:.82rem;font-weight:700;color:var(--muted);letter-spacing:.02em;}
+.top1 h1{font-size:clamp(1.45rem,7vw,2.1rem);margin:0 0 10px;line-height:1.2;letter-spacing:-.02em;}
+.qq{line-height:1.45;} .qhint{white-space:nowrap;margin-left:2px;}
+.qhint{font-size:.85rem;color:var(--c1);font-weight:700;}
+.qbtn{position:relative;transition:transform .1s;}
+.qbtn:active{transform:scale(.96);}
+.qbtns.waiting .qbtn{border-color:var(--c1);color:var(--c1);background:color-mix(in srgb,var(--c1) 8%,var(--surface));}
+@media (prefers-reduced-motion:no-preference){
+  .qbtns.waiting .qbtn{animation:nudge 1.6s ease-in-out infinite;}
+  .qbtns.waiting .qbtn:nth-child(2){animation-delay:.15s} .qbtns.waiting .qbtn:nth-child(3){animation-delay:.3s} .qbtns.waiting .qbtn:nth-child(4){animation-delay:.45s}
+  .tap{display:inline-block;animation:bob 1.2s ease-in-out infinite;}
+  .cbar i{transition:width .5s ease;}
+}
+@keyframes nudge{0%,100%{box-shadow:0 0 0 0 color-mix(in srgb,var(--c1) 0%,transparent)}50%{box-shadow:0 0 0 4px color-mix(in srgb,var(--c1) 35%,transparent)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(3px)}}
+.veil .cv{color:var(--line)!important;}
+.cwait{color:var(--muted);} .cwait b{color:var(--ink);}
+.brm{display:inline;}
+/* ===== 반응형: 태블릿 ===== */
+@media (min-width:600px){
+  .wrap{max-width:720px;padding:18px 20px 48px;}
+  .brm{display:none;}
+  .cmp{grid-template-columns:1fr 1fr;gap:16px;}
+  .cmon{flex-direction:column;align-items:stretch;gap:2px;}
+  .cmn{text-align:left;}
+  #more{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:start;}
+  #more > .ev{margin:0;}
+  #more > p{grid-column:1 / -1;}
+}
+/* ===== 반응형: PC ===== */
+@media (min-width:980px){
+  .wrap{max-width:1180px;}
+  .layout{display:grid;grid-template-columns:minmax(380px,460px) 1fr;grid-template-areas:"head head" "quick more";gap:0 22px;align-items:start;}
+  .layout > header{grid-area:head;}
+  .layout > .quick:not(.evcard){grid-area:quick;position:sticky;top:12px;}
+  .layout > #moreWrap{grid-area:more;margin:0;}
+  .layout > #moreWrap[hidden]{display:block;}
+  .morebtn{display:none;}
+  .qact{grid-template-columns:1fr;}
+  .cmp{grid-template-columns:1fr;}
+  .cmon{flex-direction:row;align-items:center;}
+  .cmn{text-align:right;}
+  .top1 h1{font-size:2.3rem;}
+}
+/* ===== 반응형: 휴대폰 가로 ===== */
+@media (orientation:landscape) and (max-height:500px){
+  .layout{display:grid;grid-template-columns:1fr 1fr;gap:0 14px;align-items:start;}
+  .layout > header{grid-column:1 / -1;}
+  .layout > #moreWrap[hidden]{display:block;}
+  .morebtn{display:none;} .qact{grid-template-columns:1fr;}
+  .top1 h1{font-size:1.3rem;margin-bottom:6px;} .kick{display:none;}
+  .cmp{grid-template-columns:1fr;}
+}
+
+@media (max-height:620px){
+  .top1 h1{font-size:1.3rem;margin:0 0 6px;} .kick{font-size:.75rem;}
+  .quick{padding:10px 11px;}
+  .qq{margin-bottom:6px;} .qbtns{margin-bottom:8px;} .qbtn{min-height:42px;}
+  .cmp{gap:6px;} .cv{font-size:clamp(1.55rem,7.8vw,2rem);}
+  .cbar{height:13px;margin:3px 0 4px;}
+  .cres{margin:8px 0 2px;font-size:1.05rem;} .cres b{font-size:1.35rem;}
+  .cnote{margin:2px 0 6px;}
+  .qact .btn{min-height:44px;}
+}
+.more{margin:2px 0 0;}
+.dh{margin:28px 0 0;font-size:1.5rem;}
+.review{margin:10px 0 0;}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);}
+caption{caption-side:top;text-align:left;font-weight:700;padding:8px 10px;color:var(--muted);}
+ul.calc{padding-left:1.1em;margin:6px 0;} ul.calc li{margin-bottom:8px;font-size:.95rem;}
+ul.src{padding-left:1.1em;} ul.src li{margin-bottom:8px;font-size:.92rem;} ul.src span{color:var(--muted);}
+.st{display:inline-block;margin:2px 8px 2px 0;font-size:.85rem;}
+.stc{white-space:normal!important;font-size:.82rem;text-align:left!important;color:var(--muted);}
+#srcDlg td,#srcDlg th{white-space:normal;text-align:left;}
+dialog{width:min(720px,94vw);max-height:88vh;border:2px solid var(--ink);border-radius:14px;padding:16px;background:var(--surface);color:var(--ink);}
+dialog::backdrop{background:rgba(0,0,0,.5);}
+dialog .top{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:8px;}
+dialog .top h2{margin:0;}
+.vmark{position:fixed;right:0;top:50%;writing-mode:vertical-rl;background:var(--virt-bg);color:var(--virt-ink);padding:10px 6px;font-weight:900;border:2px dashed currentColor;border-right:0;border-radius:10px 0 0 10px;z-index:5;letter-spacing:.1em;}
+footer{font-size:.88rem;color:var(--muted);}
+footer ul{padding-left:1.1em;}
+@media (prefers-reduced-motion:no-preference){.citybtn,.btn,.mode{transition:background-color .15s,border-color .15s;}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<div class="layout">
+<header class="top1">
+  <p class="kick">대구로페이 vs 인천e음</p>
+  <h1>우리 집 지역화폐,<br class="brm"> 인천이었다면?</h1>
+  <div id="banner" class="banner plan" hidden></div>
+</header>
+<section class="quick" aria-label="30초 체험">
+  <p class="qq"><span class="tap" aria-hidden="true">👇</span> 가족 중 <b>만 14세 이상</b>은 몇 명? <span class="qhint">눌러 보세요</span></p>
+  <div id="quickBtns" class="qbtns waiting">
+    <button type="button" class="qbtn" data-quick="1" aria-pressed="false">1명</button>
+    <button type="button" class="qbtn" data-quick="2" aria-pressed="false">2명</button>
+    <button type="button" class="qbtn" data-quick="3" aria-pressed="false">3명</button>
+    <button type="button" class="qbtn" data-quick="4" aria-pressed="false">4명</button>
+  </div>
+  <div id="quickResult" aria-live="polite"></div>
+  <p id="quickErr" class="err" hidden>입력값을 확인해 주세요.</p>
+  <div class="qact">
+    <button type="button" id="moreBtn" class="btn morebtn" data-act="more" aria-expanded="false" aria-controls="moreWrap">왜 차이 날까요? ›</button>
+    <button type="button" class="btn pri sharebtn" data-act="share">공유</button>
+  </div>
+  <p id="shareMsg" class="hint" role="status"></p>
+</section>
+<section id="moreWrap" class="quick evcard" aria-label="자세히 비교" hidden><h2>자세히 비교하면</h2><div id="more"></div></section>
+</div>
+<p class="more"><button type="button" class="linkbtn" data-act="toggledetail" aria-expanded="false" aria-controls="detail">계산 근거·출처·설정 보기</button></p>
+<main>
+<div id="detail" hidden>
+<h2 class="dh">계산 근거·출처·설정</h2>
+<div id="detailBanner" class="banner plan"></div>
+<p><span class="chip">기준일 2026-11-12</span></p>
+<section id="notices" class="card caution" aria-label="읽기 전에"></section>
+<details class="review"><summary>검토용 설정 (자료 선택, 비교 방식)</summary>
+  <label class="fld" style="margin-top:10px">자료 선택<select id="datasetSel"></select></label>
+  <div class="modes" role="tablist" aria-label="비교 방식">
+    <button type="button" class="mode" role="tab" aria-selected="true">A. 같은 소비 유지<br><small>지금 화면</small></button>
+    <button type="button" class="mode" role="tab" aria-selected="false" aria-disabled="true">B. 같은 가계 예산 유지<br><small>다음 버전</small></button>
+    <button type="button" class="mode" role="tab" aria-selected="false" aria-disabled="true">C. 정책 변경 실험<br><small>다음 버전</small></button>
+  </div>
+</details>
+
+<section class="step" aria-labelledby="h1"><h2 id="h1"><span class="num">1</span>도시 선택</h2>
+  <p>내가 이 도시의 시민이라면 어떨지 골라 보세요. 도시를 바꿔도 아래 가구 조건은 그대로 유지됩니다.</p>
+  <div id="cityBtns" class="citybtns"></div>
+  <div class="btnrow"><button type="button" class="btn" data-act="src">정책 자료와 출처 열기</button></div>
+</section>
+
+<section class="step" aria-labelledby="h2"><h2 id="h2"><span class="num">2</span>가구 설정</h2>
+  <p>기본은 4인 가구입니다. <b>만 14세 이상</b> 가구원은 지역화폐에 가입해 쓸 수 있고, 한도는 이용하는 사람마다 따로 적용됩니다. 만 14세 미만은 이용할 수 없습니다. 이 연령 조건은 두 도시에 똑같이 적용하며, 주소 등 다른 가입 자격은 확인이 필요해 모두 해당 도시 시민으로 가정합니다.</p>
+  <div id="members"></div>
+  <div class="btnrow">
+    <button type="button" class="btn" data-act="one">이용자 1명만</button>
+    <button type="button" class="btn" data-act="small">결제 가능 금액이 적은 가구</button>
+    <button type="button" class="btn" data-act="def">기본 가구</button>
+  </div>
+</section>
+
+<section class="step" aria-labelledby="h3"><h2 id="h3"><span class="num">3</span>소비 입력</h2>
+  <p>아래 금액은 통계 평균이 아니라 체험용 가상 예시입니다. 우리 집 상황에 맞게 바꿔 보세요.</p>
+  <label class="amt">우리 집 한 달 생활비 (모든 지출)<span class="inp"><input id="living" type="number" inputmode="numeric" min="0" step="100000"><em>원</em></span></label>
+  <p class="hint">가구원별 ‘지역화폐로 결제할 수 있는 금액’은 위 2단계에 입력합니다. 합계가 생활비보다 클 수는 없습니다.</p>
+  <details open><summary>계산 가정 바꾸기</summary><div id="assumptions" style="margin-top:10px"></div></details>
+  <div class="btnrow">
+    <button type="button" class="btn" data-act="reset">기본값 복원</button>
+    <button type="button" class="btn" data-act="clear">입력을 0원으로 비우기</button>
+  </div>
+</section>
+
+<div id="errs"></div>
+<div id="resultsArea">
+<section class="step" aria-labelledby="h4"><h2 id="h4"><span class="num">4</span>한 달 결과</h2>
+  <div class="meta">
+    <span class="chip">기준일 2026-11-12</span>
+    <button type="button" class="btn" data-act="asm">계산 가정 보기</button>
+    <button type="button" class="btn" data-act="src">출처 열기</button>
+  </div>
+  <label class="fld">보고 싶은 달<select id="monthSel"></select></label>
+  <p><b id="monthTitle"></b></p>
+  <div id="cards" class="metrics"></div>
+  <p id="cashline" style="margin-top:12px"></p>
+  <p id="shiftline"></p>
+  <h3 id="monthCmpTitle" style="margin-top:14px"></h3>
+  <div id="monthCmp"></div>
+  <details><summary>이 달 계산 과정 보기</summary><div id="calcSteps"></div><div id="flowTable"></div></details>
+</section>
+
+<section class="step" aria-labelledby="h5"><h2 id="h5"><span class="num">5</span>12개월 추이</h2>
+  <div class="meta"><span class="chip">기준일 2026-11-12</span><button type="button" class="btn" data-act="asm">계산 가정 보기</button><button type="button" class="btn" data-act="src">출처 열기</button></div>
+  <h3>도시별 운영 달력</h3>
+  <div id="calendar"></div>
+  <div id="cmpLegend"></div>
+  <label class="fld">그래프 기준<select id="basisSel"><option value="benefitUsed">사용한 혜택 (그달에 실제로 쓴 혜택)</option><option value="benefitGen">생긴 혜택 (그달 정책으로 새로 생긴 혜택)</option></select></label>
+  <h3 id="barTitle">월별 사용한 혜택</h3>
+  <div id="cmpBar" class="chart"></div>
+  <h3 id="lineTitle">누적 사용한 혜택</h3>
+  <div id="cmpLine" class="chart"></div>
+  <p class="hint">월별과 누적은 서로 다른 그래프이며, 두 도시는 같은 세로 축 범위와 단위(만원)를 씁니다. 같은 수치는 아래 6단계 표에 있습니다.</p>
+  <h3 style="margin-top:14px">선택한 도시의 월별 기록</h3>
+  <div id="trendTable"></div>
+</section>
+
+<section class="step" aria-labelledby="h6"><h2 id="h6"><span class="num">6</span>도시 비교 표</h2>
+  <div class="meta"><span class="chip">기준일 2026-11-12</span><button type="button" class="btn" data-act="asm">계산 가정 보기</button><button type="button" class="btn" data-act="src">출처 열기</button></div>
+  <p id="diffLine"></p>
+  <div id="cmpTable"></div>
+  <h3 style="margin-top:14px">연간 요약</h3>
+  <div id="yearTable"></div>
+  <h3 style="margin-top:14px">차이 분해</h3>
+  <div id="decompTable"></div>
+  <h3 style="margin-top:14px">정책 구조</h3>
+  <div id="policyTable"></div>
+</section>
+</div>
+<footer>
+  <ul>
+    <li>이 체험관은 가구 한 곳의 예시 계산기입니다. 실제 혜택은 각 지자체 공고에 따르며, 지역 전체의 소비·매출 효과는 계산하지 않습니다.</li>
+    <li>이름·연락처·주소를 받지 않으며, 입력한 값은 이 화면에서만 쓰고 저장하거나 보내지 않습니다.</li>
+    <li>환불·취소·소멸, 구·군 추가 캐시백, 착한가격업소 추가 혜택, 소득공제는 첫 버전에서 계산하지 않았습니다.</li>
+  </ul>
+  <p id="pub"></p>
+</footer>
+</div>
+</main>
+
+
+</div>
+<div id="virtualMark" class="vmark" hidden>가상 예시</div>
+
+<dialog id="srcDlg" aria-labelledby="srcT"><div class="top"><h2 id="srcT">정책 자료와 출처</h2><button type="button" class="btn" data-act="close">닫기</button></div><div id="srcBody"></div></dialog>
+<dialog id="asDlg" aria-labelledby="asT"><div class="top"><h2 id="asT">계산 가정</h2><button type="button" class="btn" data-act="close">닫기</button></div><div id="asBody"></div></dialog>
+
+<script>
+/* ===== 정책 데이터 (값을 바꾸려면 이 부분만 수정) =====
+   status: confirmed_news(보도 확인) / official(담당 부서 확인) / council(시의회를 통해 받은 자료) / provided(제공 자료) / assumption(가정) / note(참고) */
+var AS_OF = '2026-11-12';
+var DATASETS = {
+  plan2027: {
+    label: '2027년 계획 기준',
+    kind: 'plan',
+    banner: '2027년 예산안·계획 기준 (확정 전)',
+    evidence: {
+      source: '대구정책연구원, 「대구사랑상품권 운영 효과 분석 및 발전방향」(연구 2026-22)',
+      // 표 2-6 주요 지역별 지역사랑상품권 발행 규모(2026년), 21쪽: [도시, 발행 규모(억원), 인구(만명), 1인당 발행액(만원)]
+      perCapita: [['광주', 12000, 141, 85.1], ['인천', 22000, 306, 71.9], ['부산', 20000, 323, 61.9], ['세종', 1500, 39, 38.4], ['대전', 5000, 144, 34.7], ['울산', 2340, 110, 21.3], ['대구', 3000, 234, 12.8]], // 대구만 2026-11-12 기준 실제 발행 3,000억원으로 계산(보고서 표는 계획 3,560억원, 15.2만원)
+      // 표 2-8 대구사랑상품권 연도별 발행 규모(억원), 28쪽
+      // 2020~2025년은 표 2-8, 2026년은 2026-11-12 기준 실제 발행(제공값), 2027년은 예산안(제공값)
+      trend: [[2020, 3507], [2021, 10430], [2022, 11000], [2023, 4329], [2024, 2828], [2025, 3980], [2026, 3000], [2027, 3000, '(안)']],
+      trendCompareYear: 2026,
+      trendNext: '2027년 예산안도 시비 150억원, 발행 3,000억원 수준으로 그대로입니다.',
+      gap: '2025년 7월 말 다시 판매하기 전까지 약 10개월 동안 공급이 사실상 중단됐습니다.',
+      finding: '연구원은 시민 수요에 크게 못 미치는 발행 규모와 잦은 중단·조기 소진을 가장 큰 문제로 꼽았습니다.',
+      cite: '표 2-6(21쪽), 표 2-8(28쪽), 73쪽, 요약. 대구의 2026년 값은 보고서의 계획(3,560억원) 대신 2026년 11월 12일 기준 실제 발행 3,000억원으로 계산했고, 다른 도시는 보고서 표 그대로입니다. 2027년은 예산안 기준'
+    },
+    quickShort: '2027년 예산안 기준 · 한도를 다 쓴 경우 · 대구는 2026년처럼 2·3·9월만 판매된다고 봤어요',
+    quickNote: '2027년 예산안 기준(2026-11-12 확인). 한도를 모두 쓰고 구매에 성공한 경우입니다. 대구는 예산이 2026년과 같아 2026년처럼 2·3·9월에만 살 수 있다고 봤고, 인천은 예산안의 연중 지급 계획대로 계산했습니다.',
+    cities: {
+      daegu: {
+        id: 'daegu', name: '대구', product: '대구로페이', symbol: '■', colorKey: 'c1', typeLabel: '선할인',
+        policy: { type: 'prediscount', rate: 0.10, limitBasis: 'face', monthlyCap: 300000, holdLimit: null, activeMonths: [2, 3, 9] },
+        totalBudget: 30000000000, totalBudgetNote: '300억원 (시비 150억원 + 국비 150억원)',
+        budget2027: { cityEok: 150, totalEok: 300, note: '2026년과 같음' },
+        monthHint: '기본값은 2026년 소진 실적이 2027년에도 반복된다고 본 2·3·9월입니다. 4월 1일 하루나 10월 대면 물량으로 산 경우를 보려면 4월·10월을 체크해 보세요.',
+        facts: [
+          ['지원 방식', '선할인: 충전할 때 바로 할인', 'confirmed_news'],
+          ['혜택률', '10%', 'confirmed_news'],
+          ['혜택 적용 한도', '월 30만원 (월 최대 혜택 3만원)', 'confirmed_news'],
+          ['한도 기준 금액', '27만원을 내고 30만원을 충전하는 방식으로 계산. 30만원을 내고 33만원을 충전하는 방식으로 설명한 자료도 있어 설정에서 바꿔 볼 수 있음', 'note'],
+          ['구매 가능 월', '2·3·9월. 2026년 소진 실적이 2027년에도 반복된다고 가정 (상반기분은 4월 1일 소진, 하반기 온라인분은 9월 21일 판매 26시간 만에 소진)', 'assumption'],
+          ['가맹점', '연매출 30억원 이하 사업장 (대형마트·백화점·프랜차이즈 직영점·유흥업소 등 제외)', 'confirmed_news'],
+          ['2026년 발행', '3,000억원 (2026-11-12 기준 실제 발행, 제공값)', 'provided'],
+          ['2027년 예산', '시비 150억원, 전년과 같음 (대구시의회 의원을 통해 받은 2027년 예산안 자료). 국비 150억원을 더해 300억원, 발행 3,000억원 수준', 'council'],
+          ['이용 습관', '한도 금액을 모두 신청하고 한 달 안에 모두 소비하는 경향이 큼', 'provided'],
+          ['이용 가능 연령', '만 14세 이상 (두 도시에 같게 적용)', 'provided'],
+          ['2026년 소진 실적', '상반기 2,000억원: 4월 1일 조기 마감(대구정책연구원 보고서 28쪽, KBS 4월 2일 보도). 하반기 온라인 700억원: 9월 21일 판매 약 26시간 만에 소진(대구일보). 하반기 대면 300억원: 10월 중·하순 대부분 소진(제공값, 블로그 출처)', 'confirmed_news'],
+          ['자료가 서로 다른 부분', '상반기 소진일을 대구일보(10월 29일)와 매일신문(5월 11일)은 4월 28일로 적었지만, 대구정책연구원 보고서와 KBS는 4월 1일로 적어 4월 1일을 따랐습니다. 2026년 발행 규모는 보고서의 계획이 3,560억원이었으나 2026년 11월 12일 기준 실제 발행은 3,000억원이라 실제 값을 썼습니다. 또 KBS는 상반기 1인 한도를 50만원으로, 경향신문은 월 구매한도 30만원으로 보도했습니다', 'note'],
+          ['유효기간', '5년 (대구정책연구원 보고서 표 2-7). 환불·취소·소멸은 이 체험관 계산에 넣지 않았습니다', 'note'],
+          ['계산에서 뺀 혜택', '착한가격업소 5% 추가 캐시백 (2026년 하반기 시행. 2027년 시행 여부는 발표되지 않아 계산에 넣지 않았습니다)', 'note']
+        ],
+        sources: [
+          { title: '경향신문 2026-01-25 대구로페이 판매 안내', url: 'https://www.khan.co.kr/article/202601251012001', note: '월 구매한도 30만원, 10% 할인' },
+          { title: '대구정책연구원 연구 2026-22 「대구사랑상품권 운영 효과 분석 및 발전방향」', url: '', note: '표 2-6 도시별 1인당 발행액, 표 2-8 연도별 발행 규모, 4월 1일 상반기 조기 마감(28쪽), 약 10개월 공급 중단(73쪽)' },
+          { title: 'KBS 2026-04-02 상반기분 소진', url: 'https://v.daum.net/v/20260402202604659', note: '4월 1일 오전 8시쯤 상반기 2,000억원 소진, 하반기 한도 30만원' },
+          { title: '대구일보 2026-10-29 대구로페이 토론회', url: 'https://www.idaegu.com/news/articleView.html?idxno=666601', note: '하반기 온라인 700억원 약 26시간 만에 판매. 상반기 소진일은 4월 28일로 표기' },
+          { title: '매일신문 2026-05-11', url: 'https://www.imaeil.com/page/view/2026051114535957423', note: '상반기 소진일을 4월 28일로 표기 (KBS 보도와 다름)' },
+          { title: '한국경제 2026-09-14 하반기 발행', url: 'https://www.hankyung.com/article/202609143660h', note: '할인율 10%, 월 30만원' },
+          { title: '경북매일 2026-09-10 하반기 1,000억원 발행 예고', url: 'https://kbmaeil.com/article/20260910500407', note: '9월 21일부터 판매, 할인율 10%, 1인 30만원' },
+          { title: '경북매일 2026-09-23 하반기분 소진 보도', url: 'https://kbmaeil.com/article/20260923500079', note: '하반기 1,000억원 소진 보도 (판매 시작 이틀 뒤)' }
+        ]
+      },
+      incheon: {
+        id: 'incheon', name: '인천', product: '인천e음', symbol: '▲', colorKey: 'c2', typeLabel: '캐시백',
+        policy: { type: 'cashback', rate: 0.10, monthlyCap: 500000, holdLimit: null, activeMonths: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], lagMonths: 1, reearn: false },
+        totalBudget: 210000000000, totalBudgetNote: '2,100억원 (시비 1,350억원 + 국비 750억원)',
+        budget2027: { cityEok: 1350, totalEok: 2100, note: '' },
+        facts: [
+          ['지원 방식', '캐시백: 결제한 뒤 돌려받음', 'confirmed_news'],
+          ['혜택률', '10% 유지', 'confirmed_news'],
+          ['혜택 적용 한도', '월 50만원 결제까지 (월 최대 혜택 5만원)', 'confirmed_news'],
+          ['캐시백 사용 시점', '결제 다음 달부터 쓸 수 있다고 가정', 'assumption'],
+          ['캐시백 결제분 재적립', '다시 적립되지 않는다고 가정', 'assumption'],
+          ['혜택 지급 월', '1~12월. 2027년 예산안의 연중 지급 계획 기준 (2026년에는 7월 중순~8월 중단. 2027년은 예산이 2026년 1,351억원에서 2,100억원으로 늘지만 월 한도도 30만원에서 50만원으로 올라 소진 여부는 알 수 없음)', 'assumption'],
+          ['가맹점', '연매출 30억원 이하', 'confirmed_news'],
+          ['2027년 예산', '2,100억원 = 시비 1,350억원 + 국비 750억원 (2026-11-11 인천시 담당 부서와 통화해 확인. 11월 5일 보도된 예산안의 캐시백 예산 2,100억원과 일치). 발행 2조 1,000억원 수준', 'official'],
+          ['이용 습관', '대구 시민의 이용 습관으로 제공받은 가정을 두 도시에 똑같이 적용', 'assumption'],
+          ['이용 가능 연령', '만 14세 이상 (두 도시에 같게 적용)', 'provided'],
+          ['예산 소진', '2026년 7월 예산 소진으로 중단 후 9월 재개. 2027년 예산안은 시의회 심의 중', 'confirmed_news'],
+          ['환불·취소·소멸', '이 체험관 계산에 넣지 않았습니다', 'note'],
+          ['계산에서 뺀 혜택', '구·군 추가 캐시백(예: 제물포구 5%)', 'confirmed_news']
+        ],
+        sources: [
+          { title: '헤럴드경제 2026-11-05 인천시 2027년 예산안', url: 'https://biz.heraldcorp.com/article/10926873', note: '캐시백 예산 2,100억원, 10% 유지, 월 한도 30만원에서 50만원으로' },
+          { title: '노컷뉴스 2026-11-05 인천시 2027년 예산안', url: 'https://www.nocutnews.co.kr/news/6602495', note: '예산 전액 편성, 연중 중단 방지 취지' },
+          { title: '뉴스토마토 2026-07-23 캐시백 중단', url: 'https://newstomato.com/ReadNews.aspx?no=1307956', note: '2026년 7월 16일부터 전면 중단' },
+          { title: '헤럴드경제 2026-08-23 캐시백 9월 재개', url: 'https://www.heraldk.com/article/2026082318265414655', note: '연매출 30억원 이하 가맹점, 9월 재가동' }
+        ]
+      }
+    },
+    notices: [
+      '2026년에 대구로페이 상반기분 2,000억원은 4월 1일에, 하반기 온라인분 700억원은 9월 21일 판매 약 26시간 만에 소진된 것으로 보도되었습니다. 이 체험관은 2027년에도 같은 일이 반복된다고 가정해 대구의 구매 가능 월을 2·3·9월로 계산합니다.',
+      '인천은 2027년 예산안의 연중 지급 계획대로 12개월로 계산합니다. 대구는 2026년 실적, 인천은 2027년 계획을 기준으로 삼았다는 점이 다릅니다.',
+      '2026년에 인천e음 캐시백은 7월 중순 예산 소진으로 중단되었다가 9월에 재개되었습니다.',
+      '2027년 예산은 현재 확인된 예산안 기준입니다. 대구는 시의회를 통해 받은 자료(시비 150억원, 전년과 같음), 인천은 시 담당 부서 확인(2,100억원)입니다. 의회 심의에 따라 바뀔 수 있습니다.',
+      '예산에는 한도가 있어 모든 시민이 매달 최대 혜택을 받을 수는 없습니다. 6단계 정책 구조 표에서 재원으로 최대 혜택을 받을 수 있는 인원 환산을 확인하세요.'
+    ]
+  },
+  virtual1: {
+    label: '가상 예시 1 (구조 검토용)',
+    kind: 'virtual',
+    banner: '가상 예시 · 실제 정책이 아닙니다',
+    quickNote: '가상 예시 값입니다. 실제 정책이 아닙니다.',
+    cities: {
+      vA: { id: 'vA', name: '가상시 A', product: '가상 선할인권', symbol: '■', colorKey: 'c1', typeLabel: '선할인',
+        policy: { type: 'prediscount', rate: 0.12, limitBasis: 'face', monthlyCap: 200000, holdLimit: null, activeMonths: [3, 6, 9, 12] },
+        facts: [['지원 방식', '선할인 12%', 'virtual'], ['월 한도', '액면 20만원', 'virtual'], ['구매 가능 월', '3·6·9·12월', 'virtual']], sources: [] },
+      vB: { id: 'vB', name: '가상시 B', product: '가상 캐시백', symbol: '▲', colorKey: 'c2', typeLabel: '캐시백',
+        policy: { type: 'cashback', rate: 0.08, monthlyCap: 400000, holdLimit: null, activeMonths: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], lagMonths: 1, reearn: false },
+        facts: [['지원 방식', '캐시백 8%', 'virtual'], ['월 한도', '결제 40만원', 'virtual'], ['지급 월', '1~12월', 'virtual'], ['사용 시점', '결제 다음 달', 'virtual']], sources: [] }
+    },
+    notices: ['이 화면의 모든 정책 값은 구조를 검토하기 위해 임의로 정한 값입니다.']
+  },
+  virtual2: {
+    label: '가상 예시 2 (같은 제도 점검용)',
+    kind: 'virtual',
+    banner: '가상 예시 · 두 도시에 같은 제도를 입력한 점검용 · 실제 정책이 아닙니다',
+    quickNote: '가상 예시 값입니다. 실제 정책이 아닙니다.',
+    cities: {
+      vA: { id: 'vA', name: '가상시 A', product: '가상 캐시백', symbol: '■', colorKey: 'c1', typeLabel: '캐시백',
+        policy: { type: 'cashback', rate: 0.10, monthlyCap: 400000, holdLimit: null, activeMonths: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], lagMonths: 1, reearn: false },
+        facts: [['지원 방식', '캐시백 10%', 'virtual'], ['월 한도', '결제 40만원', 'virtual']], sources: [] },
+      vB: { id: 'vB', name: '가상시 B', product: '가상 캐시백', symbol: '▲', colorKey: 'c2', typeLabel: '캐시백',
+        policy: { type: 'cashback', rate: 0.10, monthlyCap: 400000, holdLimit: null, activeMonths: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12], lagMonths: 1, reearn: false },
+        facts: [['지원 방식', '캐시백 10%', 'virtual'], ['월 한도', '결제 40만원', 'virtual']], sources: [] }
+    },
+    notices: ['두 도시의 결과가 같아야 정상입니다.']
+  }
+};
+var MIN_AGE = 14; // 지역화폐 가입·이용 가능 최소 만 나이 (제공 조건)
+var DEFAULT_HOUSEHOLD = {
+  living: 4000000,
+  members: [
+    { label: '가구원 1', age: 45, active: true, eligibleSpend: 700000 },
+    { label: '가구원 2', age: 43, active: true, eligibleSpend: 650000 },
+    { label: '가구원 3', age: 16, active: true, eligibleSpend: 600000 },
+    { label: '가구원 4', age: 10, active: false, eligibleSpend: 0 }
+  ]
+};
+if (typeof module !== 'undefined') module.exports = { DATASETS: DATASETS, DEFAULT_HOUSEHOLD: DEFAULT_HOUSEHOLD, AS_OF: AS_OF, MIN_AGE: MIN_AGE };
+
+/* ===== 계산 함수 (정해진 공식, AI 호출 없음) ===== */
+function defaultAssumptions(city) {
+  var p = city.policy;
+  return {
+    strategy: 'full',                        // full: 한도를 모두 이용(한도까지 구매·결제, 그달 안에 소비) / cover: 소비액에 맞춰 이용 / max: 한도까지 구매하고 잔액 이월
+    limitBasis: p.limitBasis || 'face',      // 선할인 한도 기준: face(액면) / paid(납부)
+    lagMonths: p.lagMonths || 1,             // 캐시백이 사용 가능해지기까지 걸리는 달 수(1 = 다음 달)
+    reearn: !!p.reearn,                      // 캐시백으로 결제한 금액에도 캐시백을 주는지
+    activeMonths: p.activeMonths.slice()     // 구매 가능(선할인) 또는 혜택 지급(캐시백) 월
+  };
+}
+function largestPaid(p, room) {
+  if (room === Infinity) return p.monthlyCap;
+  var a = Math.min(p.monthlyCap, Math.floor(room / (1 + p.rate)));
+  while (a + 1 <= p.monthlyCap && (a + 1) + Math.floor((a + 1) * p.rate) <= room) a++;
+  while (a > 0 && a + Math.floor(a * p.rate) > room) a--;
+  return a;
+}
+function smallestPaidFor(need, r) {
+  if (need <= 0) return 0;
+  var a = Math.floor(need / (1 + r));
+  while (a + Math.floor(a * r) < need) a++;
+  return a;
+}
+function stepPrediscount(p, A, st, E, m) {
+  var on = A.activeMonths.indexOf(m) >= 0;
+  var F = 0, paid = 0, disc = 0;
+  if (on) {
+    var room = p.holdLimit == null ? Infinity : Math.max(0, p.holdLimit - st.bal);
+    var need = Math.max(0, E - st.bal);
+    if (A.limitBasis === 'face') {
+      var maxF = Math.min(p.monthlyCap, room);
+      F = (A.strategy === 'max' || A.strategy === 'full') ? maxF : Math.min(maxF, need);
+      disc = Math.floor(F * p.rate); paid = F - disc;
+    } else {
+      var maxA = largestPaid(p, room);
+      var a = (A.strategy === 'max' || A.strategy === 'full') ? maxA : Math.min(maxA, smallestPaidFor(need, p.rate));
+      disc = Math.floor(a * p.rate); paid = a; F = a + disc;
+    }
+  }
+  var balBefore = st.bal, balBBefore = st.balB;
+  var bal = st.bal + F, balB = st.balB + disc;
+  var P = A.strategy === 'full' ? bal : Math.min(E, bal);   // full: 산 금액을 그달 안에 모두 사용
+  var usedB = bal > 0 ? Math.floor(P * balB / bal) : 0;
+  st.bal = bal - P; st.balB = balB - usedB;
+  return { active: on, balBefore: balBefore, charged: F, paid: paid, benefitGen: disc, payment: P,
+    benefitUsed: usedB, cashDirect: Math.max(0, E - P), shift: Math.max(0, P - E), cashOut: paid + Math.max(0, E - P),
+    endBal: st.bal, endBalB: st.balB, pending: 0, eligibleBase: F };
+}
+function stepCashback(p, A, st, E, m) {
+  var arrived = st.pend[m] || 0;
+  st.cb += arrived; delete st.pend[m];
+  var cbBefore = st.cb;
+  var on = A.activeMonths.indexOf(m) >= 0;
+  var cbUse = Math.min(E, st.cb);
+  var own = E - cbUse;
+  if (A.strategy === 'full' && on) own = Math.max(own, p.monthlyCap);   // full: 혜택 적용 한도까지 본인 결제
+  var shift = cbUse + own - E;
+  var base = Math.min(A.reearn ? own + cbUse : own, p.monthlyCap);
+  var earned = on ? Math.floor(base * p.rate) : 0;
+  st.cb -= cbUse;
+  var k = m + A.lagMonths;
+  st.pend[k] = (st.pend[k] || 0) + earned;
+  var pend = 0;
+  Object.keys(st.pend).forEach(function (key) { if (+key > m) pend += st.pend[key]; });
+  return { active: on, balBefore: cbBefore, arrived: arrived, charged: own, paid: own, benefitGen: earned, payment: cbUse + own,
+    benefitUsed: cbUse, cashDirect: 0, shift: shift, cashOut: own, endBal: st.cb, endBalB: st.cb, pending: pend, eligibleBase: base };
+}
+function validateHousehold(hh) {
+  var msgs = [], sumE = 0;
+  hh.members.forEach(function (m) { sumE += m.eligibleSpend; });
+  if (hh.living < 0) msgs.push('월 생활비는 0원 이상이어야 합니다.');
+  hh.members.forEach(function (m, i) {
+    if (m.eligibleSpend < 0) msgs.push((i + 1) + '번 가구원의 금액이 0원보다 작습니다.');
+    if (m.age != null && (m.age < 0 || m.age > 120)) msgs.push((i + 1) + '번 가구원의 만 나이는 0~120 사이여야 합니다.');
+  });
+  if (sumE > hh.living) msgs.push('지역화폐로 결제 가능한 금액의 합(' + sumE + '원)이 월 생활비(' + hh.living + '원)보다 큽니다.');
+  return msgs;
+}
+function simulate(city, hh, assumptions) {
+  var A = Object.assign(defaultAssumptions(city), assumptions || {});
+  var p = city.policy, minAge = A.minAge == null ? 14 : A.minAge;
+  var states = hh.members.map(function () { return { bal: 0, balB: 0, cb: 0, pend: {} }; });
+  var sumE = 0; hh.members.forEach(function (m) { sumE += m.eligibleSpend; });
+  var nonElig = hh.living - sumE;
+  var months = [], cumUsed = 0, cumGen = 0, shiftOver = false;
+  for (var m = 1; m <= 12; m++) {
+    var row = { month: m, living: hh.living, charged: 0, paid: 0, payment: 0, benefitGen: 0, benefitUsed: 0,
+      cashOut: 0, shift: 0, nonElig: nonElig, endBal: 0, endBalB: 0, pending: 0, users: [] };
+    hh.members.forEach(function (mem, i) {
+      var E = mem.eligibleSpend, rec;
+      var canUse = mem.active && (mem.age == null || mem.age >= minAge);
+      if (!canUse) {
+        rec = { active: false, inactive: true, tooYoung: mem.age != null && mem.age < minAge, shift: 0, balBefore: 0, charged: 0, paid: 0, benefitGen: 0, payment: 0, benefitUsed: 0,
+          cashDirect: E, cashOut: E, endBal: 0, endBalB: 0, pending: 0, eligibleBase: 0 };
+      } else if (p.type === 'prediscount') rec = stepPrediscount(p, A, states[i], E, m);
+      else rec = stepCashback(p, A, states[i], E, m);
+      rec.eligibleSpend = E; rec.label = mem.label; rec.age = mem.age;
+      row.users.push(rec);
+      row.charged += rec.charged; row.paid += rec.paid; row.payment += rec.payment;
+      row.benefitGen += rec.benefitGen; row.benefitUsed += rec.benefitUsed; row.cashOut += rec.cashOut; row.shift += rec.shift;
+      row.endBal += rec.endBal; row.endBalB += rec.endBalB; row.pending += rec.pending;
+    });
+    row.cashOut += nonElig - row.shift;                // 한도를 채우려고 옮긴 지출만큼 지역화폐 불가 지출이 줄어듦
+    if (nonElig - row.shift < 0) shiftOver = true;
+    row.selfBurden = row.living - row.benefitUsed;     // 소비에 쓴 본인 부담
+    row.extraRoom = row.living - row.cashOut;          // 추가 소비 가능액(지역화폐가 없을 때의 현금 지출 - 이번 달 현금 지출)
+    row.ownBalDelta = row.cashOut - row.selfBurden;    // 이번 달 내 돈이 잔액에 묶이거나 풀린 금액
+    cumUsed += row.benefitUsed; cumGen += row.benefitGen;
+    row.cumUsed = cumUsed; row.cumGen = cumGen;
+    months.push(row);
+  }
+  var t = { cashOut: 0, selfBurden: 0, benefitGen: 0, benefitUsed: 0, extraRoom: 0, shift: 0, living: 12 * hh.living };
+  months.forEach(function (r) { t.cashOut += r.cashOut; t.selfBurden += r.selfBurden; t.benefitGen += r.benefitGen;
+    t.benefitUsed += r.benefitUsed; t.extraRoom += r.extraRoom; t.shift += r.shift; });
+  t.endBal = months[11].endBal; t.endPending = months[11].pending;
+  return { assumptions: A, months: months, totals: t, shiftOver: shiftOver };
+}
+/* 소비액 대비 혜택률: 한도까지 썼을 때 혜택 ÷ 결제액 */
+function effectiveRate(p, limitBasis) {
+  if (p.type !== 'prediscount' || limitBasis !== 'paid') return p.rate;
+  var a = p.monthlyCap, d = Math.floor(a * p.rate); return d / (a + d);
+}
+/* 정책상 최대 기준 차이 분해(순서에 따라 결과가 달라지지 않도록 두 순서의 평균을 씀)
+   연 최대 혜택 = 이용자 수 × 1인 월 최대 혜택 × 혜택 가능한 달 수 */
+function decompose(users, m1, n1, m2, n2) {
+  var monthsEffect = users * (n2 - n1) * (m1 + m2) / 2;
+  var capEffect = users * (m2 - m1) * (n1 + n2) / 2;
+  return { total1: users * m1 * n1, total2: users * m2 * n2, monthsEffect: monthsEffect, capEffect: capEffect };
+}
+/* 혜택 재원 ÷ 1명 연 최대 혜택 = 최대 혜택을 받을 수 있는 인원 환산 (소진 시점 예측 아님) */
+function capacity(totalBudget, perUserYear) { return perUserYear > 0 ? Math.floor(totalBudget / perUserYear) : 0; }
+/* 상태 변경 함수: 도시를 바꿔도 가구 조건과 가정은 그대로 유지 */
+function selectCity(state, cityId) { return Object.assign({}, state, { cityId: cityId }); }
+if (typeof module !== 'undefined') module.exports = { simulate: simulate, defaultAssumptions: defaultAssumptions, validateHousehold: validateHousehold, selectCity: selectCity, effectiveRate: effectiveRate, decompose: decompose, capacity: capacity };
+
+/* ===== 화면 코드 ===== */
+var PUBLISHER = ''; // 제작 주체를 표기하려면 따옴표 안에 문구를 넣습니다. 비어 있으면 화면에 표시하지 않습니다.
+var STATUS = {
+  confirmed_news: ['✔', '보도 확인 (공식 원문 미대조)'],
+  official: ['●', '담당 부서 확인'],
+  council: ['○', '시의회를 통해 받은 자료'],
+  provided: ['◆', '제공 자료'],
+  assumption: ['◇', '가정'],
+  note: ['※', '참고'],
+  virtual: ['✎', '가상 예시 값']
+};
+var state;
+function clone(o) { return JSON.parse(JSON.stringify(o)); }
+function $(id) { return document.getElementById(id); }
+function esc(s) { return String(s).replace(/[&<>"]/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]; }); }
+function fmt(n) { return Math.round(n).toLocaleString('ko-KR') + '원'; }
+function eok(n) { return (n / 100000000).toLocaleString('ko-KR', { maximumFractionDigits: 1 }) + '억원'; }
+function pct(x) { return (Math.round(x * 1000) / 10) + '%'; }
+function man(n) { n = Math.round(n); return n !== 0 && n % 10000 === 0 ? (n / 10000).toLocaleString('ko-KR') + '만원' : fmt(n); }
+function iga(name) { var c = name.charCodeAt(name.length - 1); if (c < 0xAC00 || c > 0xD7A3) return '이(가)'; return (c - 0xAC00) % 28 ? '이' : '가'; }
+function eun(name) { var c = name.charCodeAt(name.length - 1); if (c < 0xAC00 || c > 0xD7A3) return '은(는)'; return (c - 0xAC00) % 28 ? '은' : '는'; }
+function num(n) { return Math.round(n).toLocaleString('ko-KR'); }
+function ds() { return DATASETS[state.datasetId]; }
+function cities() { var d = ds(); return Object.keys(d.cities).map(function (k) { return d.cities[k]; }); }
+function curCity() { return ds().cities[state.cityId]; }
+function styleIdx(c) { return cities().indexOf(c); }
+function label(c) { return c.symbol + ' ' + c.name; }
+function initCityAssumptions() {
+  state.cityA = {};
+  cities().forEach(function (c) { var a = defaultAssumptions(c); delete a.strategy; state.cityA[c.id] = a; });
+}
+function initState() {
+  state = { datasetId: 'plan2027', cityId: 'daegu', household: clone(DEFAULT_HOUSEHOLD), strategy: 'full', month: 3, basis: 'benefitUsed', picked: false };
+  initCityAssumptions();
+}
+function compute() {
+  var res = {};
+  cities().forEach(function (c) { res[c.id] = simulate(c, state.household, Object.assign({ strategy: state.strategy }, state.cityA[c.id])); });
+  return res;
+}
+function niceMax(v) {
+  var steps = [10000, 20000, 50000, 100000, 200000, 500000, 1000000, 2000000, 5000000];
+  for (var i = 0; i < steps.length; i++) if (v / steps[i] <= 5) return { step: steps[i], max: Math.max(1, Math.ceil(v / steps[i])) * steps[i] };
+  return { step: 5000000, max: Math.ceil(v / 5000000) * 5000000 };
+}
+function legendHtml(list) {
+  return '<div class="legend">' + list.map(function (c) { return '<span class="lg lg' + styleIdx(c) + '"><b>' + c.symbol + '</b> ' + esc(c.name) + ' (' + c.typeLabel + ')</span>'; }).join('') + '</div>';
+}
+function axisDefs(id) {
+  return '<defs><pattern id="h' + id + '" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="var(--c2)" opacity="0.28"/><line x1="0" y1="0" x2="0" y2="6" stroke="var(--c2)" stroke-width="3"/></pattern></defs>';
+}
+function gridAndAxes(W, H, L, R, T, B, yscale, unitTitle) {
+  var s = '', n = Math.round(yscale.max / yscale.step);
+  for (var i = 0; i <= n; i++) {
+    var v = i * yscale.step, y = T + (H - T - B) * (1 - v / yscale.max);
+    s += '<line x1="' + L + '" x2="' + (W - R) + '" y1="' + y + '" y2="' + y + '" stroke="var(--line)" stroke-width="1"/>';
+    s += '<text x="' + (L - 8) + '" y="' + (y + 4) + '" text-anchor="end" font-size="15" fill="var(--muted)">' + (v / 10000) + '</text>';
+  }
+  s += '<text x="' + L + '" y="16" font-size="15" fill="var(--muted)">' + unitTitle + '</text>';
+  var bw = (W - L - R) / 12;
+  for (var m = 1; m <= 12; m++) s += '<text x="' + (L + bw * (m - 0.5)) + '" y="' + (H - B + 20) + '" text-anchor="middle" font-size="15" fill="var(--muted)">' + m + '</text>';
+  s += '<text x="' + (W - R) + '" y="' + (H - 6) + '" text-anchor="end" font-size="15" fill="var(--muted)">가로축: 월</text>';
+  return s;
+}
+function barChart(id, list, results, field, yscale, title) {
+  var W = 440, H = 360, L = 40, R = 8, T = 30, B = 46, bw = (W - L - R) / 12, k = list.length, w = bw * 0.78 / k;
+  var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-labelledby="t' + id + '"><title id="t' + id + '">' + esc(title) + '</title>' + axisDefs(id) + gridAndAxes(W, H, L, R, T, B, yscale, '단위: 만원');
+  list.forEach(function (c, j) {
+    var si = styleIdx(c);
+    results[c.id].months.forEach(function (r, mi) {
+      var v = r[field], h = (H - T - B) * v / yscale.max, x = L + bw * mi + bw * 0.11 + w * j, y = H - B - h;
+      var fill = si === 0 ? 'var(--c1)' : 'url(#h' + id + ')', stroke = si === 0 ? 'var(--c1)' : 'var(--c2)';
+      s += '<rect x="' + x + '" y="' + y + '" width="' + w + '" height="' + Math.max(h, 0) + '" fill="' + fill + '" stroke="' + stroke + '" stroke-width="1.5"/>';
+      if (v > 0) s += '<text x="' + (x + w / 2) + '" y="' + (y - 4) + '" text-anchor="middle" font-size="13" font-weight="700" fill="' + stroke + '">' + c.symbol + '</text>';
+    });
+  });
+  return s + '</svg>';
+}
+function lineChart(id, list, results, field, yscale, title) {
+  var W = 440, H = 360, L = 40, R = 8, T = 30, B = 46, bw = (W - L - R) / 12;
+  var s = '<svg viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-labelledby="t' + id + '"><title id="t' + id + '">' + esc(title) + '</title>' + gridAndAxes(W, H, L, R, T, B, yscale, '단위: 만원');
+  list.forEach(function (c) {
+    var si = styleIdx(c), col = si === 0 ? 'var(--c1)' : 'var(--c2)', pts = [];
+    results[c.id].months.forEach(function (r, mi) { pts.push([L + bw * (mi + 0.5), H - B - (H - T - B) * r[field] / yscale.max]); });
+    s += '<polyline fill="none" stroke="' + col + '" stroke-width="3" ' + (si === 1 ? 'stroke-dasharray="8 5"' : '') + ' points="' + pts.map(function (p) { return p[0] + ',' + p[1]; }).join(' ') + '"/>';
+    pts.forEach(function (p) {
+      if (si === 0) s += '<rect x="' + (p[0] - 4.5) + '" y="' + (p[1] - 4.5) + '" width="9" height="9" fill="' + col + '"/>';
+      else s += '<path d="M' + p[0] + ' ' + (p[1] - 7) + ' L' + (p[0] + 7) + ' ' + (p[1] + 5) + ' L' + (p[0] - 7) + ' ' + (p[1] + 5) + ' Z" fill="' + col + '"/>';
+    });
+  });
+  return s + '</svg>';
+}
+function tableWrap(h, soft) { return '<div class="tw' + (soft ? ' soft' : '') + '" tabindex="0">' + h + '</div>'; }
+
+/* ---------- 화면 조각 ---------- */
+function renderTop() {
+  var d = ds();
+  $('datasetSel').innerHTML = Object.keys(DATASETS).map(function (k) { return '<option value="' + k + '"' + (k === state.datasetId ? ' selected' : '') + '>' + esc(DATASETS[k].label) + '</option>'; }).join('');
+  var b = $('banner'); b.className = 'banner ' + d.kind; b.textContent = d.kind === 'virtual' ? '▣ ' + d.banner : '◈ ' + d.banner; b.hidden = d.kind !== 'virtual';
+  $('detailBanner').textContent = '◈ ' + d.banner;
+  $('notices').innerHTML = '<h2>읽기 전에</h2><ul>' + d.notices.map(function (n) { return '<li>' + esc(n) + '</li>'; }).join('') + '</ul>';
+  $('virtualMark').hidden = d.kind !== 'virtual';
+  renderEvidence();
+}
+function renderCityButtons() {
+  $('cityBtns').innerHTML = cities().map(function (c) {
+    var on = c.id === state.cityId, p = c.policy;
+    var cap = p.type === 'prediscount' ? '월 ' + num(p.monthlyCap / 10000) + '만원까지 ' + Math.round(p.rate * 100) + '% 할인' : '월 ' + num(p.monthlyCap / 10000) + '만원 결제까지 ' + Math.round(p.rate * 100) + '% 캐시백';
+    return '<button type="button" class="citybtn cb' + styleIdx(c) + '" data-city="' + c.id + '" aria-pressed="' + on + '"><span class="sym">' + c.symbol + '</span><span class="nm">' + esc(c.name) + '</span><span class="pd">' + esc(c.product) + ' · ' + c.typeLabel + '</span><span class="cp">' + cap + '</span>' + (on ? '<span class="sel">선택됨 ✓</span>' : '') + '</button>';
+  }).join('');
+}
+function memberRow(i) {
+  var m = state.household.members[i], ok = m.age == null || m.age >= MIN_AGE;
+  return '<div class="mem" data-row="' + i + '"><div class="memhead"><b>' + esc(m.label) + '</b>' +
+    '<label class="age">만 <input type="number" inputmode="numeric" min="0" max="120" step="1" data-mem="' + i + '" data-f="age" value="' + m.age + '"> 세</label></div>' +
+    '<label class="chk"><input type="checkbox" data-mem="' + i + '" data-f="active"' + (m.active && ok ? ' checked' : '') + (ok ? '' : ' disabled') + '> <span class="chkt">가입·이용</span></label>' +
+    '<p class="agenote" data-note="' + i + '">' + (ok ? '만 ' + MIN_AGE + '세 이상이라 가입·이용할 수 있습니다.' : '만 ' + MIN_AGE + '세 미만은 이용할 수 없어 이 가구원의 지출은 현금으로 계산합니다.') + '</p>' +
+    '<label class="amt">한 달에 지역화폐 가맹점에서 쓸 수 있는 금액<span class="inp"><input type="number" inputmode="numeric" min="0" step="10000" data-mem="' + i + '" data-f="spend" value="' + m.eligibleSpend + '"><em>원</em></span></label></div>';
+}
+function renderHousehold() {
+  var hh = state.household;
+  $('living').value = hh.living;
+  $('members').innerHTML = hh.members.map(function (m, i) { return memberRow(i); }).join('');
+}
+function refreshMemberRow(i) {
+  var m = state.household.members[i], ok = m.age == null || m.age >= MIN_AGE, row = document.querySelector('[data-row="' + i + '"]');
+  if (!row) return;
+  var cb = row.querySelector('input[data-f="active"]'); cb.disabled = !ok; cb.checked = m.active && ok;
+  row.querySelector('[data-note]').textContent = ok ? '만 ' + MIN_AGE + '세 이상이라 가입·이용할 수 있습니다.' : '만 ' + MIN_AGE + '세 미만은 이용할 수 없어 이 가구원의 지출은 현금으로 계산합니다.';
+}
+function monthChips(c) {
+  var a = state.cityA[c.id], p = c.policy, out = '';
+  for (var m = 1; m <= 12; m++) out += '<label class="mchip"><input type="checkbox" data-mc="' + c.id + '" value="' + m + '"' + (a.activeMonths.indexOf(m) >= 0 ? ' checked' : '') + '><span>' + m + '월</span></label>';
+  return out;
+}
+function renderAssumptions() {
+  var h = '<label class="fld">이용 방식 (두 도시에 똑같이 적용)<select id="strategySel"><option value="full"' + (state.strategy === 'full' ? ' selected' : '') + '>한도를 모두 이용: 한도까지 사고(결제하고) 그달 안에 모두 사용 (기본)</option><option value="cover"' + (state.strategy === 'cover' ? ' selected' : '') + '>소비액에 맞춰 이용: 쓸 만큼만 사고 결제</option><option value="max"' + (state.strategy === 'max' ? ' selected' : '') + '>한도까지 구매하고 남는 잔액은 다음 달로 (선할인에만 적용)</option></select></label><p class="hint">‘한도를 모두 이용’은 대구 시민이 한도를 모두 신청하고 한 달 안에 모두 쓰는 경향이 크다는 제공 가정이며, 인천에도 같은 습관을 적용합니다.</p>';
+  h += '<div class="agrid">';
+  cities().forEach(function (c) {
+    var a = state.cityA[c.id], p = c.policy;
+    h += '<div class="abox ab' + styleIdx(c) + '"><h4>' + label(c) + ' (' + c.typeLabel + ')</h4>';
+    if (p.type === 'prediscount') {
+      h += '<label class="fld">한도 기준 금액<select data-ca="' + c.id + '" data-k="limitBasis"><option value="face"' + (a.limitBasis === 'face' ? ' selected' : '') + '>액면 기준 (27만원 내고 30만원 충전)</option><option value="paid"' + (a.limitBasis === 'paid' ? ' selected' : '') + '>납부 기준 (30만원 내고 33만원 충전)</option></select></label>';
+    } else {
+      h += '<label class="fld">캐시백을 쓸 수 있는 시점<select data-ca="' + c.id + '" data-k="lagMonths"><option value="1"' + (a.lagMonths === 1 ? ' selected' : '') + '>결제 다음 달부터</option><option value="2"' + (a.lagMonths === 2 ? ' selected' : '') + '>결제 2개월 뒤부터</option></select></label>';
+      h += '<label class="fld">캐시백으로 결제한 금액에 다시 캐시백<select data-ca="' + c.id + '" data-k="reearn"><option value="no"' + (!a.reearn ? ' selected' : '') + '>주지 않음</option><option value="yes"' + (a.reearn ? ' selected' : '') + '>줌</option></select></label>';
+    }
+    h += '<fieldset class="mf"><legend>' + (p.type === 'prediscount' ? '구매에 성공한 달' : '혜택이 지급되는 달') + '</legend><div class="mchips">' + monthChips(c) + '</div>' +
+      (p.type === 'prediscount' ? '<p class="hint">' + esc(c.monthHint || '구매하지 못한 달은 체크를 해제해 보세요.') + '</p>' : '<p class="hint">2026년 7~8월에는 예산 소진으로 지급이 중단되었습니다. 중단된 달은 체크를 해제해 보세요.</p>') + '</fieldset></div>';
+  });
+  $('assumptions').innerHTML = h + '</div>';
+}
+function userLines(c, row) {
+  var p = c.policy, lines = [];
+  row.users.forEach(function (u) {
+    if (u.inactive) { lines.push('<li><b>' + esc(u.label) + '</b>: ' + (u.tooYoung ? '만 ' + u.age + '세로 만 ' + MIN_AGE + '세 미만이라 이용할 수 없어' : '가입·이용하지 않아') + ' 혜택이 없습니다. 지출 ' + fmt(u.eligibleSpend) + '은 현금으로 계산합니다.</li>'); return; }
+    if (p.type === 'prediscount') {
+      var t = '<li><b>' + esc(u.label) + '</b>: 결제할 금액 ' + fmt(u.eligibleSpend) + '. ';
+      if (!u.active) t += '이번 달은 구매할 수 없어 이전 잔액 ' + fmt(u.balBefore) + '을 먼저 씁니다. ';
+      else t += '구매 가능한 달이라 ' + fmt(u.charged) + '을 충전하고(혜택 ' + fmt(u.charged) + ' × ' + Math.round(p.rate * 100) + '% = ' + fmt(u.benefitGen) + '), 계좌에서 ' + fmt(u.paid) + '이 나갑니다. ';
+      t += '결제 ' + fmt(u.payment) + ' 중 혜택분 ' + fmt(u.benefitUsed) + '을 썼고, 나머지 ' + fmt(u.cashDirect) + '은 현금으로 냅니다. ' + (u.shift > 0 ? '한도를 모두 쓰느라 다른 지출 ' + fmt(u.shift) + '을 지역화폐 가맹점으로 옮긴 것으로 계산합니다. ' : '') + '현금 지출 ' + fmt(u.cashOut) + ', 달 말 잔액 ' + fmt(u.endBal) + '.</li>';
+      lines.push(t);
+    } else {
+      var s = '<li><b>' + esc(u.label) + '</b>: 결제할 금액 ' + fmt(u.eligibleSpend) + '. 사용할 수 있는 캐시백 ' + fmt(u.balBefore) + ' 중 ' + fmt(u.benefitUsed) + '을 쓰고, 본인 결제 ' + fmt(u.paid) + '. ';
+      s += u.active ? '혜택 적용액 ' + fmt(u.eligibleBase) + '(월 한도 ' + fmt(p.monthlyCap) + ' 이내) × ' + Math.round(p.rate * 100) + '% = 캐시백 ' + fmt(u.benefitGen) + ' 발생. ' : '이번 달은 혜택이 지급되지 않는 달입니다. ';
+      s += (u.shift > 0 ? '한도를 채우느라 다른 지출 ' + fmt(u.shift) + '을 e음 가맹점으로 옮긴 것으로 계산합니다. ' : '') + '달 말 사용 가능 캐시백 ' + fmt(u.endBal) + ', 지급 예정 ' + fmt(u.pending) + '.</li>';
+      lines.push(s);
+    }
+  });
+  return '<ul class="calc">' + lines.join('') + '</ul>';
+}
+function renderResults() {
+  var errs = validateHousehold(state.household);
+  $('errs').innerHTML = errs.length ? errs.map(function (e) { return '<p class="err">⚠ ' + esc(e) + '</p>'; }).join('') : '';
+  var res0 = errs.length ? null : compute();
+  if (res0) cities().forEach(function (c) { if (res0[c.id].shiftOver) errs.push(c.name + ': 한도를 모두 이용하려면 옮겨야 하는 지출이 지역화폐 불가 지출(월 생활비 − 결제 가능 금액 합계)보다 큽니다. 월 생활비를 늘리거나 이용 방식을 ‘소비액에 맞춰 이용’으로 바꿔 보세요.'); });
+  $('errs').innerHTML = errs.length ? errs.map(function (e) { return '<p class="err">⚠ ' + esc(e) + '</p>'; }).join('') : '';
+  $('resultsArea').hidden = errs.length > 0;
+  $('quickResult').hidden = errs.length > 0;
+  $('quickErr').hidden = errs.length === 0;
+  updateQuickBtns();
+  if (errs.length) return;
+  var res = res0, list = cities(), c = curCity(), r = res[c.id], row = r.months[state.month - 1], p = c.policy;
+  var maxM = 0, maxC = 0;
+  list.forEach(function (x) { res[x.id].months.forEach(function (m) { maxM = Math.max(maxM, m.benefitUsed); maxC = Math.max(maxC, m.cumUsed); }); });
+  var ysM = niceMax(maxM), ysC = niceMax(maxC);
+  $('monthSel').innerHTML = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12].map(function (m) { return '<option value="' + m + '"' + (m === state.month ? ' selected' : '') + '>' + m + '월</option>'; }).join('');
+  var balLabel = p.type === 'prediscount' ? '달 말에 남은 지역화폐 ' + fmt(row.endBal) + ' (이 중 혜택분 ' + fmt(row.endBalB) + ')' : '달 말에 쓸 수 있는 캐시백 ' + fmt(row.endBal) + ' + 지급 예정 ' + fmt(row.pending);
+  var unused = p.type === 'prediscount' ? row.endBal : row.endBal + row.pending;
+  $('cards').innerHTML =
+    card('본인 부담', fmt(row.selfBurden), '월 생활비 ' + fmt(row.living) + ' − 사용한 혜택 ' + fmt(row.benefitUsed)) +
+    card('사용한 혜택', fmt(row.benefitUsed), '이번 달 혜택 발생 ' + fmt(row.benefitGen) + ' (발생과 사용은 따로 기록)') +
+    card('미사용 잔액', fmt(unused), balLabel) +
+    card('추가 소비 가능액', fmt(row.extraRoom), '월 생활비 − 현금 지출. ' + (row.extraRoom === row.benefitUsed ? '이번 달은 잔액에 묶인 내 돈이 없어 사용한 혜택과 같습니다. ' : '잔액에 묶이거나 풀린 내 돈 ' + fmt(Math.abs(row.ownBalDelta)) + '만큼 사용한 혜택과 다릅니다. ') + '여력일 뿐 실제 소비가 늘었다는 뜻은 아닙니다.');
+  $('cashline').innerHTML = '지역화폐가 없을 때 이번 달 현금 지출은 <b>' + fmt(row.living) + '</b>, ' + esc(c.name) + ' 정책을 적용하면 계좌에서 나간 돈은 <b>' + fmt(row.cashOut) + '</b>입니다.' + (row.ownBalDelta !== 0 ? ' 차이 ' + fmt(Math.abs(row.ownBalDelta)) + '은 내 돈이 지역화폐 잔액으로 ' + (row.ownBalDelta > 0 ? '묶인' : '풀린') + ' 금액입니다.' : '');
+  $('shiftline').innerHTML = row.shift > 0 ? '이번 달 한도를 모두 쓰려고 다른 지출 <b>' + fmt(row.shift) + '</b>을 ' + esc(c.name) + ' 가맹점으로 옮긴 것으로 계산했습니다.' : '';
+  $('monthCmpTitle').textContent = state.month + '월, 두 도시 나란히 보기';
+  var rows = list.map(function (x) { return res[x.id].months[state.month - 1]; });
+  function unusedOf(x, rw) { return x.policy.type === 'prediscount' ? rw.endBal : rw.endBal + rw.pending; }
+  function diffCell(vals, verb) {
+    if (vals[0] === vals[1]) return '같음';
+    var hi = vals[0] > vals[1] ? 0 : 1; return list[hi].symbol + ' ' + list[hi].name + iga(list[hi].name) + ' ' + num(Math.abs(vals[0] - vals[1])) + '원 ' + verb;
+  }
+  var defs = [['본인 부담', function (x, rw) { return rw.selfBurden; }, '더 부담'], ['사용한 혜택', function (x, rw) { return rw.benefitUsed; }, '더 받음'], ['미사용 잔액', unusedOf, '더 남음'], ['추가 소비 가능액', function (x, rw) { return rw.extraRoom; }, '더 큼'], ['현금 지출', function (x, rw) { return rw.cashOut; }, '더 냄']];
+  $('monthCmp').innerHTML = tableWrap('<table><caption>' + state.month + '월 (단위: 원)</caption><thead><tr><th>항목</th>' + list.map(function (x) { return '<th>' + label(x) + '</th>'; }).join('') + '<th>차이</th></tr></thead><tbody>' +
+    defs.map(function (d) { var v = list.map(function (x, i) { return d[1](x, rows[i]); }); return '<tr><th scope="row">' + d[0] + '</th>' + v.map(function (n) { return '<td>' + num(n) + '</td>'; }).join('') + '<td>' + diffCell(v, d[2]) + '</td></tr>'; }).join('') + '</tbody></table>', true);
+  renderQuick(res, list);
+  $('monthTitle').textContent = state.month + '월, ' + label(c) + ' 기준';
+  $('calcSteps').innerHTML = userLines(c, row);
+  $('flowTable').innerHTML = tableWrap('<table><caption class="sr">' + state.month + '월 기록</caption><thead><tr><th>충전</th><th>납부</th><th>결제</th><th>혜택 발생</th><th>혜택 사용</th><th>미사용 잔액</th><th>지급 예정</th><th>현금 지출</th></tr></thead><tbody><tr><td>' + num(row.charged) + '</td><td>' + num(row.paid) + '</td><td>' + num(row.payment) + '</td><td>' + num(row.benefitGen) + '</td><td>' + num(row.benefitUsed) + '</td><td>' + num(row.endBal) + '</td><td>' + num(row.pending) + '</td><td>' + num(row.cashOut) + '</td></tr></tbody></table><p class="unit">단위: 원 (이용자 합계)</p>');
+  // 12개월 추이(선택 도시)
+  var tot = { ch: 0, pd: 0, py: 0, bg: 0, bu: 0, co: 0 }, body = '';
+  r.months.forEach(function (m) { tot.ch += m.charged; tot.pd += m.paid; tot.py += m.payment; tot.bg += m.benefitGen; tot.bu += m.benefitUsed; tot.co += m.cashOut;
+    body += '<tr' + (m.month === state.month ? ' class="cur"' : '') + '><th scope="row">' + m.month + '월</th><td>' + num(m.charged) + '</td><td>' + num(m.paid) + '</td><td>' + num(m.payment) + '</td><td>' + num(m.benefitGen) + '</td><td>' + num(m.benefitUsed) + '</td><td>' + num(m.cumUsed) + '</td><td>' + num(m.endBal) + '</td><td>' + num(m.pending) + '</td><td>' + num(m.cashOut) + '</td></tr>'; });
+  body += '<tr class="tot"><th scope="row">합계·연말</th><td>' + num(tot.ch) + '</td><td>' + num(tot.pd) + '</td><td>' + num(tot.py) + '</td><td>' + num(tot.bg) + '</td><td>' + num(tot.bu) + '</td><td>' + num(r.months[11].cumUsed) + '</td><td>' + num(r.totals.endBal) + '</td><td>' + num(r.totals.endPending) + '</td><td>' + num(tot.co) + '</td></tr>';
+  $('trendTable').innerHTML = tableWrap('<table><caption>' + esc(label(c)) + ' 월별 기록 (단위: 원)</caption><thead><tr><th>월</th><th>충전</th><th>납부</th><th>결제</th><th>혜택 발생</th><th>혜택 사용</th><th>누적 사용</th><th>미사용 잔액</th><th>지급 예정</th><th>현금 지출</th></tr></thead><tbody>' + body + '</tbody></table>');
+  // 도시 비교
+  $('cmpLegend').innerHTML = legendHtml(list);
+  $('calendar').innerHTML = calendarHtml(list);
+  var bf = state.basis, cf = bf === 'benefitGen' ? 'cumGen' : 'cumUsed', bn = bf === 'benefitGen' ? '생긴 혜택' : '사용한 혜택';
+  var mxB = 0, mxC = 0; list.forEach(function (x) { res[x.id].months.forEach(function (m) { mxB = Math.max(mxB, m.benefitUsed, m.benefitGen); mxC = Math.max(mxC, m.cumUsed, m.cumGen); }); });
+  var ysB = niceMax(mxB), ysCC = niceMax(mxC);
+  $('barTitle').textContent = '월별 ' + bn; $('lineTitle').textContent = '누적 ' + bn + ' (1월부터 더한 금액)';
+  $('cmpBar').innerHTML = barChart('cb', list, res, bf, ysB, '두 도시 월별 ' + bn);
+  $('cmpLine').innerHTML = lineChart('cl', list, res, cf, ysCC, '두 도시 누적 ' + bn);
+  var th = '<th>월</th>' + list.map(function (x) { return '<th>' + label(x) + ' 월별</th>'; }).join('') + list.map(function (x) { return '<th>' + label(x) + ' 누적</th>'; }).join('');
+  var fM = state.basis, fC = state.basis === 'benefitGen' ? 'cumGen' : 'cumUsed';
+  var tb = '';
+  for (var i = 0; i < 12; i++) tb += '<tr><th scope="row">' + (i + 1) + '월</th>' + list.map(function (x) { return '<td>' + num(res[x.id].months[i][fM]) + '</td>'; }).join('') + list.map(function (x) { return '<td>' + num(res[x.id].months[i][fC]) + '</td>'; }).join('') + '</tr>';
+  $('cmpTable').innerHTML = tableWrap('<table><caption>두 도시 ' + (state.basis === 'benefitGen' ? '생긴 혜택' : '사용한 혜택') + ' (그래프와 같은 수치, 단위: 원)</caption><thead><tr>' + th + '</tr></thead><tbody>' + tb + '</tbody></table>');
+  function rowOf(name, f) { return '<tr><th scope="row">' + name + '</th>' + list.map(function (x) { return '<td>' + num(f(res[x.id].totals, res[x.id])) + '</td>'; }).join('') + '</tr>'; }
+  $('yearTable').innerHTML = tableWrap('<table><caption>연간 요약 (단위: 원)</caption><thead><tr><th>항목</th>' + list.map(function (x) { return '<th>' + label(x) + '</th>'; }).join('') + '</tr></thead><tbody>' +
+    rowOf('지역화폐가 없을 때 현금 지출', function (t) { return t.living; }) + rowOf('정책 적용 시 현금 지출', function (t) { return t.cashOut; }) + rowOf('본인 부담 (생활비 − 사용한 혜택)', function (t) { return t.selfBurden; }) +
+    rowOf('발생한 혜택', function (t) { return t.benefitGen; }) + rowOf('사용한 혜택', function (t) { return t.benefitUsed; }) + rowOf('연말 미사용 잔액', function (t) { return t.endBal; }) + rowOf('연말 지급 예정 (캐시백)', function (t) { return t.endPending; }) + rowOf('추가 소비 가능액 (합계)', function (t) { return t.extraRoom; }) + rowOf('한도를 채우려고 옮긴 지출 (합계)', function (t) { return t.shift; }) + '</tbody></table>', true);
+  function diffSentence(f) {
+    var s = list.slice().sort(function (p, q) { return res[q.id].totals[f] - res[p.id].totals[f]; }), dd = res[s[0].id].totals[f] - res[s[1].id].totals[f];
+    return dd === 0 ? '두 도시가 ' + fmt(res[s[0].id].totals[f]) + '으로 같습니다.' : label(s[0]) + ' <b>' + fmt(res[s[0].id].totals[f]) + '</b>, ' + label(s[1]) + ' <b>' + fmt(res[s[1].id].totals[f]) + '</b>으로 ' + fmt(dd) + ' 차이가 납니다.';
+  }
+  $('diffLine').innerHTML = '입력한 조건에서 2027년 정책으로 생긴 혜택은 ' + diffSentence('benefitGen') + ' 그해 안에 쓴 혜택은 ' + diffSentence('benefitUsed') + ' 이 차이는 아래 정책 구조와 위에서 고른 가정에서 나온 계산 결과이며, 원인은 ‘차이 분해’ 표에 나눠 보였습니다.';
+  var ph = '<th>정책 구조</th>' + list.map(function (x) { return '<th>' + label(x) + '</th>'; }).join(''), pr = '';
+  function prow(n, f) { pr += '<tr><th scope="row">' + n + '</th>' + list.map(function (x) { return '<td>' + f(x) + '</td>'; }).join('') + '</tr>'; }
+  prow('방식', function (x) { return x.typeLabel + (x.policy.type === 'prediscount' ? ' (충전할 때 바로 할인)' : ' (결제 후 돌려받음)'); });
+  prow('혜택률', function (x) { return Math.round(x.policy.rate * 100) + '%'; });
+  prow('소비액 대비 혜택률 (한도까지 썼을 때)', function (x) { return (Math.round(effectiveRate(x.policy, state.cityA[x.id].limitBasis) * 1000) / 10) + '%'; });
+  prow('혜택을 쓸 수 있는 때', function (x) { return x.policy.type === 'prediscount' ? '충전한 그달부터' : '결제 ' + (state.cityA[x.id].lagMonths === 1 ? '다음 달' : '2개월 뒤') + '부터 (가정)'; });
+  prow('한도 (월)', function (x) { return fmt(x.policy.monthlyCap) + (x.policy.type === 'prediscount' ? ' 구매' : ' 결제'); });
+  prow('이용자 1명의 월 최대 혜택', function (x) { return fmt(Math.floor(x.policy.monthlyCap * x.policy.rate)); });
+  prow('혜택 가능한 달 (지금 설정)', function (x) { return state.cityA[x.id].activeMonths.length + '개월'; });
+  prow('이용자 1명의 연 최대 혜택 (지금 설정)', function (x) { return fmt(Math.floor(x.policy.monthlyCap * x.policy.rate) * state.cityA[x.id].activeMonths.length); });
+  prow('2027년 혜택 재원 합계 (제공값)', function (x) { return x.totalBudgetNote ? esc(x.totalBudgetNote) : '-'; });
+  prow('재원으로 연 최대 혜택을 받을 수 있는 인원 환산', function (x) { var py = Math.floor(x.policy.monthlyCap * x.policy.rate) * x.policy.activeMonths.length; return x.totalBudget ? '약 ' + num(capacity(x.totalBudget, py)) + '명 (정책상 기본 설정 기준)' : '-'; });
+  var nUsers = state.household.members.filter(function (m) { return m.active && (m.age == null || m.age >= MIN_AGE); }).length;
+  if (list.length === 2) {
+    var A1 = list[0], A2 = list[1], m1 = Math.floor(A1.policy.monthlyCap * A1.policy.rate), m2 = Math.floor(A2.policy.monthlyCap * A2.policy.rate);
+    var dc = decompose(nUsers, m1, state.cityA[A1.id].activeMonths.length, m2, state.cityA[A2.id].activeMonths.length);
+    function sg(v) { return (v > 0 ? '+' : v < 0 ? '−' : '') + fmt(Math.abs(v)); }
+    $('decompTable').innerHTML = tableWrap('<table><caption>차이 분해: 우리 집 이용자 ' + nUsers + '명이 정책상 최대로 받는 경우 (' + label(A2) + ' − ' + label(A1) + ')</caption><tbody>' +
+      '<tr><th scope="row">' + label(A1) + ' 연 최대</th><td>' + nUsers + '명 × ' + fmt(m1) + ' × ' + state.cityA[A1.id].activeMonths.length + '개월 = ' + fmt(dc.total1) + '</td></tr>' +
+      '<tr><th scope="row">' + label(A2) + ' 연 최대</th><td>' + nUsers + '명 × ' + fmt(m2) + ' × ' + state.cityA[A2.id].activeMonths.length + '개월 = ' + fmt(dc.total2) + '</td></tr>' +
+      '<tr><th scope="row">혜택 받는 달 수 차이 때문</th><td>' + sg(dc.monthsEffect) + '</td></tr>' +
+      '<tr><th scope="row">1명의 월 최대 혜택(한도 × 혜택률) 차이 때문</th><td>' + sg(dc.capEffect) + '</td></tr>' +
+      '<tr><th scope="row">합계</th><td>' + sg(dc.total2 - dc.total1) + '</td></tr></tbody></table>', true) +
+      '<p class="hint">두 요인을 어느 순서로 바꾸는지에 따라 몫이 달라지지 않도록 두 순서의 평균으로 나눴습니다. 소비액이 한도보다 작거나 ‘한도를 모두 이용’이 아닌 경우에는 실제 결과와 다를 수 있습니다.</p>';
+  } else $('decompTable').innerHTML = '';
+  $('policyTable').innerHTML = tableWrap('<table><caption>정책 구조 비교 (정책상 최대, 소비액과 한도 조건이 맞을 때)</caption><thead><tr>' + ph + '</tr></thead><tbody>' + pr + '</tbody></table>', true);
+}
+function calendarHtml(list) {
+  return list.map(function (c) {
+    var a = state.cityA[c.id].activeMonths, cells = '', si = styleIdx(c);
+    for (var m = 1; m <= 12; m++) { var on = a.indexOf(m) >= 0; cells += '<span class="cal' + (on ? ' on c' + si : '') + '"><b>' + m + '월</b><i>' + (on ? c.symbol : '–') + '</i></span>'; }
+    return '<div class="calrow"><p><b>' + label(c) + '</b> · ' + (c.policy.type === 'prediscount' ? '구매해서 할인받을 수 있는 달 ' : '결제하면 캐시백이 지급되는 달 ') + a.length + '개월</p><div class="calgrid">' + cells + '</div></div>';
+  }).join('') + '<p class="hint">기호가 있는 달에만 새 혜택이 생깁니다. 인천은 지난달 캐시백을 다음 달에 쓸 수 있어 혜택을 쓰는 달이 한 달 늦게 시작됩니다.</p>';
+}
+function userCount() { return state.household.members.filter(function (m) { return m.active && (m.age == null || m.age >= MIN_AGE); }).length; }
+function updateQuickBtns() {
+  var n = userCount();
+  Array.prototype.forEach.call(document.querySelectorAll('[data-quick]'), function (b) { b.setAttribute('aria-pressed', String(!!state.picked && +b.dataset.quick === n)); });
+  var qb = $('quickBtns'); if (qb) qb.classList.toggle('waiting', !state.picked);
+}
+function setQuick(n) {
+  var ages = [45, 43, 16, 15], young = [10, 8, 6], spend = [700000, 650000, 600000, 600000];
+  state.household.members.forEach(function (m, i) {
+    if (i < n) { m.age = ages[i]; m.active = true; m.eligibleSpend = spend[i]; }
+    else { m.age = young[i - n] == null ? 8 : young[i - n]; m.active = false; m.eligibleSpend = 0; }
+  });
+  renderHousehold(); renderResults();
+}
+function renderQuick(res, list) {
+  var mxv = 1;
+  list.forEach(function (x) { mxv = Math.max(mxv, res[x.id].totals.benefitGen); });
+  var pk = !!state.picked;
+  var h = '<p class="clab">' + (pk ? '우리 집이 1년에 받는 혜택' : '숫자를 누르면 우리 집 결과가 나와요') + '</p><div class="cmp' + (pk ? '' : ' veil') + '">';
+  list.forEach(function (x) {
+    var v = res[x.id].totals.benefitGen, w = pk ? Math.max(v > 0 ? 3 : 0, Math.round(v / mxv * 100)) : 0, a = state.cityA[x.id].activeMonths, cells = '';
+    for (var m = 1; m <= 12; m++) cells += '<i class="' + (a.indexOf(m) >= 0 ? 'on' : '') + '">' + m + '</i>';
+    h += '<div class="crow c' + styleIdx(x) + '"><div class="ctop"><span class="cn"><b>' + label(x) + '</b> <small>' + esc(x.product) + '</small></span><span class="cv">' + (pk ? man(v) : '?만원') + '</span></div>' +
+      '<div class="cbar"><i style="width:' + w + '%"></i></div>' +
+      '<div class="cmon"><span class="strip" aria-label="혜택 받는 달 ' + a.length + '개월">' + cells + '</span><b class="cmn">' + a.length + '개월</b></div></div>';
+  });
+  h += '</div>';
+  if (!pk) h += '<p class="cres cwait">같은 가족인데<br>대구와 인천은 <b>얼마나</b> 다를까요?</p>';
+  else if (list.length === 2) {
+    var g1 = res[list[0].id].totals.benefitGen, g2 = res[list[1].id].totals.benefitGen;
+    if (g1 === g2) h += '<p class="cres">두 도시가 같아요</p>';
+    else { var lo = g1 < g2 ? 0 : 1, hi = 1 - lo; h += '<p class="cres">' + list[lo].name + eun(list[lo].name) + ' ' + list[hi].name + '보다<br>1년에 <b>' + man(Math.abs(g2 - g1)) + '</b> 덜 받아요</p>'; }
+  }
+  h += '<p class="cnote">' + esc(ds().quickShort || ds().quickNote || '') + '</p>';
+  $('quickResult').innerHTML = h;
+}
+function eokText(n) { return n >= 10000 ? Math.floor(n / 10000) + '조' + (n % 10000 ? ' ' + (n % 10000).toLocaleString('ko-KR') + '억' : '') : n.toLocaleString('ko-KR') + '억'; }
+function renderEvidence() {
+  var ev = ds().evidence, box = $('more'), list = cities(), h = '';
+  // 1) 한 사람 한 달 최대 혜택, 2) 2027년 예산
+  h += '<div class="ev"><h3>한 사람이 한 달에 받는 최대 혜택</h3><div class="pair">';
+  list.forEach(function (x) { h += '<div class="pcell fc' + styleIdx(x) + '"><b>' + label(x) + '</b><span>' + man(Math.floor(x.policy.monthlyCap * x.policy.rate)) + '</span></div>'; });
+  h += '</div></div>';
+  if (list.every(function (x) { return !!x.budget2027; })) {
+    h += '<div class="ev"><h3>2027년 지역화폐 예산 (시 예산)</h3><div class="pair">';
+    list.forEach(function (x) { var bb = x.budget2027; h += '<div class="pcell fc' + styleIdx(x) + '"><b>' + label(x) + '</b><span>' + eokText(bb.cityEok) + '원</span>' + (bb.note ? '<em>' + esc(bb.note) + '</em>' : '') + '</div>'; });
+    h += '</div></div>';
+  }
+  if (ev) {
+    var names = list.map(function (c) { return c.name; });
+    var rows = ev.perCapita.slice().sort(function (p, q) { return q[3] - p[3]; }), mx = rows[0][3], me = null, other = null;
+    rows.forEach(function (r, i) { if (r[0] === names[0]) me = { r: r, rank: i + 1 }; if (r[0] === names[1]) other = r; });
+    h += '<div class="ev"><h3>시민 1명당 지역화폐 발행액 (2026년)</h3>';
+    rows.forEach(function (r) {
+      var cls = r[0] === names[0] ? ' e0' : r[0] === names[1] ? ' e1' : '', sym = r[0] === names[0] ? list[0].symbol + ' ' : r[0] === names[1] ? list[1].symbol + ' ' : '';
+      h += '<div class="erow' + cls + '"><span class="en">' + sym + esc(r[0]) + '</span><span class="et"><i style="width:' + Math.max(2, Math.round(r[3] / mx * 100)) + '%"></i></span><span class="evv">' + r[3].toFixed(1) + '만원</span></div>';
+    });
+    if (me) h += '<p class="ebig">' + esc(me.r[0]) + eun(me.r[0]) + ' ' + rows.length + '개 도시 중 <b>' + (me.rank === rows.length ? '가장 적어요' : me.rank + '번째') + '</b>' + (other && other[3] > me.r[3] ? '<br>' + esc(other[0]) + eun(other[0]) + ' ' + esc(me.r[0]) + '의 <b>' + (Math.round(other[3] / me.r[3] * 10) / 10).toFixed(1) + '배</b>' : '') + '</p>';
+    h += '</div><div class="ev"><h3>대구로페이 발행액 변화</h3><div class="tbars" style="grid-template-columns:repeat(' + ev.trend.length + ',1fr)">';
+    var tm = 0, peak = null, cmp = null; ev.trend.forEach(function (t) { if (t[1] > tm) { tm = t[1]; peak = t; } if (t[0] === (ev.trendCompareYear || ev.trend[ev.trend.length - 1][0])) cmp = t; });
+    ev.trend.forEach(function (t) { var now = t[0] >= cmp[0]; h += '<div class="tb' + (t === peak ? ' pk' : now ? (t[2] ? ' ls pl' : ' ls') : '') + '"><span class="tv">' + (t === peak || t === cmp ? eokText(t[1]) : '') + '</span><i style="height:' + Math.max(3, Math.round(t[1] / tm * 100)) + '%"></i><span class="ty">' + String(t[0]).slice(2) + '년' + (t[2] ? '<br>' + esc(t[2]) : '') + '</span></div>'; });
+    h += '</div><p class="ebig">' + peak[0] + '년의 약 <b>' + Math.round(cmp[1] / peak[1] * 100) + '%</b>로 줄었어요</p>' + (ev.trendNext ? '<p class="etxt">' + esc(ev.trendNext) + '</p>' : '') + (ev.gap ? '<p class="etxt">' + esc(ev.gap) + '</p>' : '') + '</div>';
+    h += '<p class="etxt efind">' + esc(ev.finding) + '</p><p class="qnote">자료: ' + esc(ev.source) + ' ' + esc(ev.cite) + '.</p>';
+  }
+  h += '<p class="qnote">' + esc(ds().quickNote || '') + '</p>';
+  box.innerHTML = h;
+  // 첫 화면의 더 보기 버튼 문구
+  var mb = $('moreBtn');
+  if (ev && list.length === 2) {
+    var rws = ev.perCapita.slice().sort(function (p, q) { return q[3] - p[3]; }), last = rws[rws.length - 1];
+    mb.innerHTML = last[0] === list[0].name ? '시민 1명당 발행액, ' + esc(list[0].name) + eun(list[0].name) + ' 7개 도시 중 꼴찌 <span aria-hidden="true">›</span>' : '왜 차이 날까요? <span aria-hidden="true">›</span>';
+  } else mb.innerHTML = '왜 차이 날까요? <span aria-hidden="true">›</span>';
+}
+function card(t, v, s) { return '<div class="metric"><h3>' + t + '</h3><p class="val">' + v + '</p><p class="sub">' + s + '</p></div>'; }
+function renderAll() { renderTop(); renderCityButtons(); renderHousehold(); renderAssumptions(); renderResults(); }
+
+/* ---------- 대화상자 ---------- */
+function openDlg(id) { var d = $(id); if (d.showModal) d.showModal(); else d.setAttribute('open', ''); }
+function fillSources() {
+  var h = '<p class="unit">기준일 ' + AS_OF + ' · 2027년 예산은 담당 부서 확인과 시의회 자료를, 그 밖의 정책 값은 보도를 근거로 했습니다. 항목마다 근거 종류를 표시했습니다.</p><p class="legendline">' + Object.keys(STATUS).map(function (k) { return '<span class="st">' + STATUS[k][0] + ' ' + STATUS[k][1] + '</span>'; }).join(' ') + '</p>';
+  cities().forEach(function (c) {
+    h += '<h3>' + label(c) + ' · ' + esc(c.product) + '</h3><div class="tw"><table><tbody>' + c.facts.map(function (f) { return '<tr><th scope="row">' + esc(f[0]) + '</th><td>' + esc(f[1]) + '</td><td class="stc">' + STATUS[f[2]][0] + ' ' + STATUS[f[2]][1] + '</td></tr>'; }).join('') + '</tbody></table></div>';
+    if (c.sources.length) h += '<ul class="src">' + c.sources.map(function (s) { return '<li>' + (s.url ? '<a href="' + esc(s.url) + '" target="_blank" rel="noopener noreferrer">' + esc(s.title) + '</a>' : '<b>' + esc(s.title) + '</b>') + '<br><span>' + esc(s.note) + '</span></li>'; }).join('') + '</ul>';
+  });
+  if (state.datasetId === 'plan2027') h += '<h3>자료가 서로 다른 부분</h3><ul class="src"><li>대구 2026년 상반기분 소진일: KBS(4월 2일 보도)는 4월 1일, 대구일보·매일신문은 4월 28일로 적었습니다. 이 체험관은 4월 1일 기준으로 4월을 구매 가능 월에서 뺐습니다.</li><li>대구 선할인 기준 금액: 제공받은 설명은 27만원 내고 30만원 충전, 일부 보도·블로그는 30만원 충전 시 33만원어치로 설명합니다. 두 방식을 모두 계산할 수 있게 했습니다.</li><li>인천 월 한도: 2027년 예산안은 30만원에서 50만원으로 상향이지만, 2026년 하반기 보도는 30만원과 50만원이 엇갈립니다.</li><li>두 도시의 기준이 다릅니다. 대구는 2026년 소진 실적이 반복된다고 가정했고, 인천은 2027년 예산안의 연중 지급 계획을 그대로 썼습니다. 인천도 2026년에는 7월 중순부터 8월까지 지급이 중단되었습니다.</li></ul>';
+  $('srcBody').innerHTML = h;
+}
+function fillAssump() {
+  var h = '<ul class="calc"><li>한 가구의 예시 계산입니다. 지역 전체의 소비 증가나 골목상권 매출 효과는 추정하지 않습니다.</li><li>월 단위로 계산합니다. 월 중간의 정책 변경은 월별 설정(구매에 성공한 달, 혜택이 지급되는 달)으로만 표현합니다.</li><li>한도는 가구 전체가 아니라 이용자 한 명마다 따로 적용합니다.</li><li>혜택 발생과 혜택 사용은 따로 기록하며 합산하지 않습니다.</li><li>환불·취소·유효기간 소멸은 계산하지 않습니다 (첫 버전 범위 밖).</li><li>예산 소진 시점은 예측하지 않습니다. 구매에 성공한 달과 혜택이 지급되는 달은 직접 고릅니다.</li><li>월 생활비와 결제 가능 금액은 통계 평균이 아닌 가상 예시입니다.</li><li>두 도시 모두 구·군 추가 캐시백, 착한가격업소 추가 혜택, 소득공제, 쿠폰은 계산하지 않아 실제 혜택은 더 클 수 있습니다.</li><li>결제 가능한 금액은 모두 해당 지역화폐 가맹점에서 결제한다고 가정합니다.</li><li>캐시백은 다음 달에 쓰므로 12월에 생긴 혜택은 이듬해 1월에 씁니다. 2026년 12월에 생긴 캐시백이 2027년 1월에 쓰이는 몫은 넣지 않아, 연간 비교는 ‘생긴 혜택’과 ‘쓴 혜택’을 함께 봐야 합니다.</li><li>혜택은 한 달 결제액을 합쳐 원 미만을 버립니다. 실제로는 결제 건마다 계산되어 몇 원 차이가 날 수 있습니다.</li><li>예산에는 한도가 있어 모든 시민이 매달 최대 혜택을 받을 수 없습니다. 이 체험관은 우리 집이 구매·지급에 성공한 경우를 보여 줍니다.</li><li>국비와 시비의 매칭 비율은 계산에 쓰지 않습니다. 혜택은 혜택률과 한도, 시행 월로만 계산합니다.</li><li>한도를 모두 이용하는 방식은 한도만큼을 그달 안에 지역화폐로 쓴다고 가정하므로, 결제 가능 금액이 한도보다 작으면 그 차이만큼 다른 지출을 옮긴 것으로 계산합니다.</li><li>만 14세 이상만 가입·이용할 수 있다고 가정하며(두 도시 동일), 만 14세 미만 가구원의 지출은 현금으로 계산합니다.</li></ul><h3>지금 선택된 가정</h3><ul class="calc"><li>구매 방식: ' + (state.strategy === 'cover' ? '필요한 만큼만 구매' : '한도까지 구매하고 남는 잔액은 다음 달로') + '</li>';
+  cities().forEach(function (c) {
+    var a = state.cityA[c.id];
+    h += '<li>' + label(c) + ': ' + (c.policy.type === 'prediscount' ? '한도 기준 ' + (a.limitBasis === 'face' ? '액면' : '납부') + ', 구매에 성공한 달 ' + (a.activeMonths.length ? a.activeMonths.join('·') + '월' : '없음') : '캐시백 사용 가능 시점 ' + (a.lagMonths === 1 ? '결제 다음 달' : '결제 2개월 뒤') + ', 재적립 ' + (a.reearn ? '줌' : '주지 않음') + ', 혜택이 지급되는 달 ' + (a.activeMonths.length === 12 ? '1~12월' : a.activeMonths.join('·') + '월')) + '</li>';
+  });
+  $('asBody').innerHTML = h + '</ul>';
+}
+
+/* ---------- 이벤트 ---------- */
+function bind() {
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-city],[data-act],[data-quick]'); if (!t) return;
+    if (t.dataset.quick) { state.picked = true; setQuick(+t.dataset.quick); return; }
+    if (t.dataset.city) { state = selectCity(state, t.dataset.city); renderCityButtons(); renderResults(); return; }
+    var a = t.dataset.act;
+    if (a === 'more') { var mv = $('moreWrap'), op = mv.hidden; mv.hidden = !op; t.setAttribute('aria-expanded', String(op)); if (op) mv.scrollIntoView({ block: 'start' }); return; }
+    if (a === 'toggledetail') { var dv = $('detail'), open = dv.hidden; dv.hidden = !open; t.setAttribute('aria-expanded', String(open)); t.textContent = open ? '계산 근거·출처·설정 닫기' : '계산 근거·출처·설정 보기'; if (open) dv.scrollIntoView({ block: 'start' }); return; }
+    if (a === 'share') {
+      var url = location.href, msg = $('shareMsg'), fb = function () { msg.textContent = '이 주소를 복사해 카카오톡이나 문자로 보내세요: ' + url; };
+      try {
+        if (navigator.share) navigator.share({ title: document.title, text: '대구로페이와 인천e음, 우리 집이라면 1년에 얼마나 달라질까요?', url: url }).catch(function () {});
+        else if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(function () { msg.textContent = '주소를 복사했습니다. 카카오톡이나 문자에 붙여 넣어 보내세요.'; }, fb);
+        else fb();
+      } catch (err) { fb(); }
+      return;
+    }
+    if (a === 'src') { fillSources(); openDlg('srcDlg'); }
+    else if (a === 'asm') { fillAssump(); openDlg('asDlg'); }
+    else if (a === 'close') { var d = t.closest('dialog'); if (d.close) d.close(); else d.removeAttribute('open'); }
+    else if (a === 'reset') { var c = state.cityId, d0 = state.datasetId; initState(); state.picked = true; state.datasetId = d0; if (DATASETS[d0].cities[c]) state.cityId = c; else state.cityId = Object.keys(DATASETS[d0].cities)[0]; initCityAssumptions(); renderAll(); }
+    else if (a === 'clear') { state.household.living = 0; state.household.members.forEach(function (m) { m.eligibleSpend = 0; }); renderHousehold(); renderResults(); }
+    else if (a === 'small') { state.household = clone(DEFAULT_HOUSEHOLD); state.household.members[0].eligibleSpend = 50000; state.household.members[1].eligibleSpend = 30000; state.household.members[2].eligibleSpend = 20000; renderHousehold(); renderResults(); }
+    else if (a === 'one') { state.household = clone(DEFAULT_HOUSEHOLD); state.household.members[1].active = false; state.household.members[2].active = false; renderHousehold(); renderResults(); }
+    else if (a === 'def') { state.household = clone(DEFAULT_HOUSEHOLD); renderHousehold(); renderResults(); }
+  });
+  document.addEventListener('input', function (e) {
+    var t = e.target;
+    if (t.id === 'living' || (t.dataset && t.dataset.mem !== undefined)) state.picked = true;
+    if (t.id === 'living') { state.household.living = Math.max(0, parseInt(t.value || '0', 10) || 0); renderResults(); }
+    else if (t.dataset.mem !== undefined && t.dataset.f === 'age') { var ag = parseInt(t.value, 10); state.household.members[+t.dataset.mem].age = isNaN(ag) ? 0 : ag; refreshMemberRow(+t.dataset.mem); renderResults(); }
+    else if (t.dataset.mem !== undefined && t.dataset.f === 'spend') { state.household.members[+t.dataset.mem].eligibleSpend = Math.max(0, parseInt(t.value || '0', 10) || 0); renderResults(); }
+  });
+  document.addEventListener('change', function (e) {
+    var t = e.target;
+    if (t.id === 'datasetSel') { state.datasetId = t.value; state.cityId = Object.keys(DATASETS[t.value].cities)[0]; initCityAssumptions(); renderAll(); }
+    else if (t.id === 'strategySel') { state.strategy = t.value; renderResults(); }
+    else if (t.id === 'basisSel') { state.basis = t.value; renderResults(); }
+    else if (t.id === 'monthSel') { state.month = +t.value; renderResults(); }
+    else if (t.dataset.mem !== undefined && t.dataset.f === 'active') { state.household.members[+t.dataset.mem].active = t.checked; renderResults(); }
+    else if (t.dataset.ca) { var a = state.cityA[t.dataset.ca], k = t.dataset.k; if (k === 'reearn') a.reearn = t.value === 'yes'; else if (k === 'lagMonths') a.lagMonths = +t.value; else a[k] = t.value; renderResults(); }
+    else if (t.dataset.mc) { var am = state.cityA[t.dataset.mc].activeMonths, mv = +t.value, ix = am.indexOf(mv); if (t.checked && ix < 0) am.push(mv); if (!t.checked && ix >= 0) am.splice(ix, 1); renderResults(); }
+  });
+}
+initState(); bind(); renderAll();
+
+(function(){ if (PUBLISHER) document.getElementById('pub').textContent = PUBLISHER; })();
+</script>
+</body>
+</html>
